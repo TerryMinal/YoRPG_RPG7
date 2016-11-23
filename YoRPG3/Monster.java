@@ -8,8 +8,8 @@ public class Monster extends Character {
     public Monster() {
         health = 150; 
         strength = (int) (Math.random() * 50 + 30);
-        defense = 20; 
-        attackRating = 3;
+        defense = origDefense = 20; 
+        attackRating = origAttack = 3;
 	name = "Brownies";
     }
     public void specialize() {

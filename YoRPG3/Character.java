@@ -1,7 +1,7 @@
 //Team RPG7
 //Terry Guan, Xin Yi Chen, Alitquan Mallick
-//HW31: Ye Olde Role Playing Game, Improved
-//11-17-16
+//HW34: Ye Olde Role Playing Game, Unchained
+//11-23-16
 public abstract class Character{
     protected String name; 
     protected int health, strength, defense, origDefense;
