@@ -13,6 +13,21 @@ public class Monk  extends Character {
 	defense = origDefense = 60; 
 	attackRating = origAttack = .1; 
     }
+    
+    public void specialize() {
+	defense = (int)(origDefense/.9);
+        attackRating =  origAttack * 2.3; 
+    }
+    
+    public void normalize() {
+	defense = origDefense; 
+	attackRating = origAttack;
+    }
+
+    public String about() {
+	return "He may be meditating. He may be calm. But don't mess with him or else he'll whip open a can of monk fu on you";
+    }
+
 }
 
 

@@ -1,6 +1,5 @@
+
 public class Mage extends Character {
-    //warrior description
-    //  super.description = "A character with emphasis on power. It's brolicness takes away from it's brains and speed; Indeed this character is the embodiment of brawns over brain";  
 
     public Mage() {
 	this("noName"); 
@@ -12,6 +11,21 @@ public class Mage extends Character {
 	strength = 90; 
 	defense = origDefense = 40; 
 	attackRating = origAttack = .2; 
+    }
+    
+        public void specialize() {
+	defense = (int)(origDefense/1.01);
+        attackRating =  origAttack * 3.2; 
+    }
+
+
+    public void normalize() {
+	defense = origDefense; 
+	attackRating = origAttack;
+    }
+
+    public String about() {
+	return "And with his great staff and white beard he screas \"You shall not pass!\" This character can cast magic and all sorts of magic stuff";
     }
 }
 

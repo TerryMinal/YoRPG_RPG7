@@ -1,6 +1,4 @@
 public class Rogue extends Character {
-    //warrior description
-    //  super.description = "A character with emphasis on power. It's brolicness takes away from it's brains and speed; Indeed this character is the embodiment of brawns over brain";  
 
     public Rogue () {
 	this("noName"); 
@@ -12,6 +10,20 @@ public class Rogue extends Character {
 	strength = 95; 
 	defense = origDefense = 150; 
 	attackRating = origAttack = .3; 
+    }
+
+    public void specialize() {
+	defense = origDefense;
+        attackRating =  origAttack * 1.5; 
+    }
+    
+    public void normalize() {
+	defense = origDefense; 
+	attackRating = origAttack;
+    }
+
+    public String about() {
+	return "\"...\" said the rogue. Fast and descrete, he strikes when you least expect it. He wears a lot of black too.";
     }
 }
 

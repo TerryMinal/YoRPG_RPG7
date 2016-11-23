@@ -80,7 +80,7 @@ public class YoRPG
 	t += "\t1: Warrior\n";
 	t += "\t2: Mage\n";
 	t += "\t3: Monk\n";
-	t += "\t4: Archer\n";
+	t += "\t4: Rogue\n";
 	t += "Selection: ";
 	System.out.print( t );
 
@@ -92,9 +92,8 @@ public class YoRPG
 
 
 	//instantiate the player's character
-	pat = new Character ();
 	if ( chosenClass == 1) {
-	    pat = new Warrior (name);
+	    pat = new Warrior(name); 
 	}
         else if ( chosenClass == 2) {
 	    pat = new Mage (name);

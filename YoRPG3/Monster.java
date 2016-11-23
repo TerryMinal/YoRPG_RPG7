@@ -12,6 +12,17 @@ public class Monster extends Character {
         attackRating = 3;
 	name = "Brownies";
     }
+    public void specialize() {
+	defense = (int)(origDefense/1.1);
+        attackRating =  origAttack * 1.2; 
+    }
 
-   
+    public void normalize() {
+	defense = origDefense; 
+	attackRating = origAttack;
+    }
+
+    public String about() {
+	return "I'm a monster. I was designed by game developers to be slain for points."; 
+    }
 }

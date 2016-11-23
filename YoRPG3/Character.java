@@ -2,11 +2,10 @@
 //Terry Guan, Xin Yi Chen, Alitquan Mallick
 //HW31: Ye Olde Role Playing Game, Improved
 //11-17-16
-public class Character{
+public abstract class Character{
     protected String name; 
     protected int health, strength, defense, origDefense;
     protected double attackRating,origAttack;
-    protected static String description; //static because static methods can only use static variables
 
         /*
       returns boolean indicating living or dead
@@ -56,23 +55,14 @@ public class Character{
       2.decreases defense attribute
       3.increases attack attribute
      */
-    public void specialize() {
-	defense = (int)(origDefense/2);
-        attackRating =  origAttack/2; 
-    }
-
+    public abstract void specialize();
 
     /*
       1.prepares the Warrior to perform a normal attack
       2.resets defense attribute
       3.resets attack attribute
      */
-    public void normalize() {
-	defense = origDefense; 
-	attackRating = origAttack;
-    }
+    public abstract void normalize(); 
 
-    protected static String about() {
-	return description; 
-    }
+    protected abstract String about(); 
 }
