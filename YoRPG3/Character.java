@@ -4,7 +4,7 @@
 //11-23-16
 public abstract class Character{
     protected String name; 
-    protected int health, strength, defense, origDefense;
+    protected int health, strength, defense, origDefense, speed, origSpeed;
     protected double attackRating,origAttack;
 
         /*
