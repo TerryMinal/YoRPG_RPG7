@@ -4,7 +4,7 @@
 //11-23-16
 public abstract class Character{
     protected String name; 
-    protected int health, strength, defense, origDefense, speed, origSpeed;
+    protected int health, strength, origStrength,defense, origDefense, speed, origSpeed;
     protected double attackRating,origAttack;
 
         /*
@@ -40,15 +40,7 @@ public abstract class Character{
 	health = origHealth - damage; 
     }
 
-    public int attack(Character  opp) {
-	int attackValue = (int)(strength * attackRating - opp.getDefense());
-	if (attackValue < 0){
-	    attackValue = 0;
-	}
-        opp.lowerHP(attackValue);
-	return attackValue;
-
-    }
+    public abstract void attack();
 
     /*
       1.prepares the Warrior to perform a special attack
@@ -62,7 +54,10 @@ public abstract class Character{
       2.resets defense attribute
       3.resets attack attribute
      */
-    public abstract void normalize(); 
+    public void normalize(){
+	defense = origDefense; 
+	attackRating = origAttack;	
+    }
 
     protected abstract String about(); 
 }

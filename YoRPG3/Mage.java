@@ -1,6 +1,6 @@
 
 public class Mage extends Character {
-
+    private int MP;
     public Mage() {
 	this("noName"); 
     }
@@ -10,10 +10,11 @@ public class Mage extends Character {
 	health = 300;
 	strength = 90; 
 	defense = origDefense = 40; 
-	attackRating = origAttack = .2; 
+	attackRating = origAttack = .2;
+	MP = 100;
     }
     
-        public void specialize() {
+    public void specialize() {
 	defense = (int)(origDefense/1.01);
         attackRating =  origAttack * 3.2; 
     }
