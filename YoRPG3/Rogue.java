@@ -9,7 +9,8 @@ public class Rogue extends Character {
 	health = 200;
 	strength = 95; 
 	defense = origDefense = 150; 
-	attackRating = origAttack = .3; 
+	speed = origSpeed = 
+	attackRating = origAttack = .3;
     }
 
     public void specialize() {
@@ -20,6 +21,7 @@ public class Rogue extends Character {
     public void normalize() {
 	defense = origDefense; 
 	attackRating = origAttack;
+	speed = origSpeed; 
     }
 
     public String about() {

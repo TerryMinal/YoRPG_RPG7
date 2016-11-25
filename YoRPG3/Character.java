@@ -1,7 +1,5 @@
 //Team RPG7
 //Terry Guan, Xin Yi Chen, Alitquan Mallick
-//HW34: Ye Olde Role Playing Game, Unchained
-//11-23-16
 public abstract class Character{
     protected String name; 
     protected int health, strength, origStrength,defense, origDefense, speed, origSpeed;
@@ -40,7 +38,11 @@ public abstract class Character{
 	health = origHealth - damage; 
     }
 
-    public abstract void attack();
+    public void normalAttack() {
+	lowerHP(30); 
+    } 
+    
+    public abstract void chooseAttack(); 
 
     /*
       1.prepares the Warrior to perform a special attack
@@ -56,8 +58,9 @@ public abstract class Character{
      */
     public void normalize(){
 	defense = origDefense; 
-	attackRating = origAttack;	
-    }
-
+	attackRating = origAttack;
+	speed = origSpeed; 
+    }    
+    
     protected abstract String about(); 
 }
