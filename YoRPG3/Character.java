@@ -45,6 +45,11 @@ public abstract class Character{
     } 
            
     public void chooseAttack(Character opp, int i){
+	if (state != 2){
+	    if (evade == true){
+	    opp.lowerHP(0);
+	    }
+	}
 	if (i == 1){
 	    attack1(opp);
 	}
@@ -73,6 +78,11 @@ public abstract class Character{
     }
     
     public void specialize(Character opp, int i){
+	if (state != 2){ // if the opp is not paralyzed
+	    if (evade == true){
+		opp.lowerHP(0);
+	    }
+	}
 	if (i == 1){
 	    special1(opp);
 	}
@@ -83,8 +93,12 @@ public abstract class Character{
 	    special3(opp);
 	}
     }
+
+    //poison
     public abstract special1();
+    //paralysis
     public abstract special2();
+    //healing
     public abstract special3();
     
 
