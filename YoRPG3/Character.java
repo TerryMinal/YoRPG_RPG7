@@ -50,15 +50,25 @@ public abstract class Character{
 	    if (evade == true){
 	    opp.lowerHP(0);
 	    }
+	    elif (i == 1){
+		attack1(opp);
+	    }
+	    elif (i == 2){
+		attack2(opp);
+	    }
+	
+	    elif (i == 3){
+		attack3(opp);
+	    }
 	}
-	if (i == 1){
+	elif (i == 1){
 	    attack1(opp);
 	}
-	if (i == 2){
+	elif (i == 2){
 	    attack2(opp);
 	}
 	
-	if (i == 3){
+	elif (i == 3){
 	    attack3(opp);
 	}
     }
@@ -83,14 +93,23 @@ public abstract class Character{
 	    if (evade == true){
 		opp.lowerHP(0);
 	    }
+	    elif (i == 1){
+		special1(opp);
+	    }
+	    elif (i == 2){
+		special2(opp);
+	    }
+	    elif (i == 3){
+		special3(opp);
+	    }
 	}
-	if (i == 1){
+	elif (i == 1){
 	    special1(opp);
 	}
-	if (i == 2){
+	elif (i == 2){
 	    special2(opp);
 	}
-	if (i == 3){
+	elif (i == 3){
 	    special3(opp);
 	}
     }
