@@ -17,20 +17,35 @@ public class Mage extends Character {
 	MP = 100;
     }
 
-    //attack 1: frost strick (30MP, 50 strength, .5 speed percent)
-    public void attack1(Character opp){
-	damage = strength* attackRating - (opp.getDefense());
-	if (evade()){
-	    opp.lowerHP(0);
-	}
-	else{
-	    opp.lowerHP(damage);
-	}
+    public void getMP(int num){
+	int tempMP = MP;
+	MP = tempMP + num;
     }
 
-    public void attack2(Character opp){
+    public void useMP(int num){
+	int tempMP1 = MP;
+	MP = tempMP - num;
     }
+
+    //attack 1: frost strick (30MP, 100 strength, .5 speed percent)
+    public void attack1(Character opp){
+	damage = 100* attackRating - (opp.getDefense());
+	opp.lowerHP(damage);
+	useMP(30);
+    }
+
+    //attack 2: lightning spear(20MP, 95 strength, .75 speed percent)
+    public void attack2(Character opp){
+	damage = 95* attackRating - (opp.getDefense());
+	opp.lowerHP(damage);
+	useMP(20);
+    }
+
+    //attack 3: Jinx of Demon Fire(50MP, 140 strength, .4 speed percent)
     public void attack3(Character opp){
+	damage = 140* attackRating - (opp.getDefense());
+	opp.lowerHP(damage);
+	useMP(50);
     }
 
     public void defend(){

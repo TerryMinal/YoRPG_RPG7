@@ -37,7 +37,8 @@ public abstract class Character{
       takes an int parameter, decreases life attribute by that amount
     */
     public void lowerHP(int damage) {
-	health = origHealth - damage; 
+	int tempHP = health;
+	health = tempHP - damage; 
     }
     
     public void normalAttack() {
