@@ -2,7 +2,7 @@
 //Terry Guan, Xin Yi Chen, Alitquan Mallick
 public abstract class Character{
     protected String name; 
-    protected int health, strength, origStrength, defense, origDefense; 
+    protected int health,origHealth, defense, origDefense; 
     protected int speed, origSpeed, evasion, origEvasion;
     protected int charge, state;  
     protected double attackRating,origAttack;
@@ -37,22 +37,30 @@ public abstract class Character{
       takes an int parameter, decreases life attribute by that amount
     */
     public void lowerHP(int damage) {
-	int origHealth = health;
 	health = origHealth - damage; 
     }
     
     public void normalAttack() {
 	lowerHP(30); 
     } 
+           
+    public void chooseAttack(Character opp, int i){
+	if (i == 1){
+	    attack1(opp);
+	}
+	if (i == 2){
+	    attack2(opp);
+	}
+	
+	if (i == 3){
+	    attack3(opp);
+	}
+    }
+
+    public abstract attack1();
+    public abstract attack2();
+    public abstract attack3();
     
-    public abstract void chooseAttack(); 
-    
-    /*
-      1.prepares the Warrior to perform a special attack
-      2.decreases defense attribute
-      3.increases attack attribute
-     */
-    //determines whether a character evades an attack or not
     public boolean evade() {
 	if ((int) (Math.random() * 100) < evasion)
 	    return true; 
@@ -64,13 +72,21 @@ public abstract class Character{
 	charge += amount; 
     }
     
-    public abstract void specialize();
+    public void specialize(Character opp, int i){
+	if (i == 1){
+	    special1(opp);
+	}
+	if (i == 2){
+	    special2(opp);
+	}
+	if (i == 3){
+	    special3(opp);
+	}
+    }
+    public abstract special1();
+    public abstract special2();
+    public abstract special3();
     
-    /*
-      1.prepares the Warrior to perform a normal attack
-      2.resets defense attribute
-      3.resets attack attribute
-     */
 
     public abstract void defend(); 
 
