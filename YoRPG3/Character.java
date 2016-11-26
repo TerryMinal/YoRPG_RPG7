@@ -73,9 +73,9 @@ public abstract class Character{
 	}
     }
 
-    public abstract attack1();
-    public abstract attack2();
-    public abstract attack3();
+    public abstract void  attack1();
+    public abstract void attack2();
+    public abstract void attack3();
     
     public boolean evade() {
 	if ((int) (Math.random() * 100) < evasion)
@@ -115,11 +115,11 @@ public abstract class Character{
     }
 
     //poison
-    public abstract special1();
+    public abstract void  special1();
     //paralysis
-    public abstract special2();
+    public abstract void special2();
     //healing
-    public abstract special3();
+    public abstract void special3();
     
 
     public abstract void defend(); 

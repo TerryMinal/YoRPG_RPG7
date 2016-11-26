@@ -13,6 +13,12 @@ public class Rogue extends Character {
 	attackRating = origAttack = .3;
     }
 
+    public void attack1 (Character enemy) {}
+    
+    public void attack2 (Character enemy) {}	
+
+    public void attack3 (Character enemy) {}
+
     public void specialize() {
 	defense = origDefense;
         attackRating =  origAttack * 1.5; 
