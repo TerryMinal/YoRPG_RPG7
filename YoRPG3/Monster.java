@@ -6,21 +6,24 @@
 public class Monster extends Character {
 
     public Monster() {
-        health = 150; 
-        strength = (int) (Math.random() * 50 + 30);
-        defense = origDefense = 20; 
+        health = origHealth = 150; 
+        defense = origDefense = 20;
+	evasion = origEvasion = 40;
         attackRating = origAttack = 3;
-	name = "Brownies";
-    }
-    public void specialize() {
-	defense = (int)(origDefense/1.1);
-        attackRating =  origAttack * 1.2; 
+        speed = origSpeed = 80;
+	charge = 0;
+	state = 0;
     }
 
-    public void normalize() {
-	defense = origDefense; 
-	attackRating = origAttack;
-    }
+    public void attack1 (Character enemy) {} 
+    public void attack2 (Character enemy) {}	
+    public void attack3 (Character enemy) {}
+
+    public void special1 (Character enemy) {}
+    public void special2 (Character enemy) {}
+    public void special3 (Character enemy) {}
+
+    public void defend () {}
 
     public String about() {
 	return "I'm a monster. I was designed by game developers to be slain for points."; 

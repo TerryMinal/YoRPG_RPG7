@@ -7,7 +7,6 @@ public class Warrior extends Character {
     public Warrior(String name) {
 	this.name = name;
 	health = 125;
-	strength = 105; 
 	defense = origDefense = 45; 
 	attackRating = origAttack = .4; 
     }

@@ -47,35 +47,35 @@ public abstract class Character{
            
     public void chooseAttack(Character opp, int i){
 	if (state != 2){
-	    if (evade == true){
+	    if (opp.evade()  == true){
 	    opp.lowerHP(0);
 	    }
-	    elif (i == 1){
+	    else if (i == 1){
 		attack1(opp);
 	    }
-	    elif (i == 2){
+	    else if(i == 2){
 		attack2(opp);
 	    }
 	
-	    elif (i == 3){
+	    else if (i == 3){
 		attack3(opp);
 	    }
 	}
-	elif (i == 1){
+	else if (i == 1){
 	    attack1(opp);
 	}
-	elif (i == 2){
+	else if (i == 2){
 	    attack2(opp);
 	}
 	
-	elif (i == 3){
+	else if (i == 3){
 	    attack3(opp);
 	}
     }
 
-    public abstract void  attack1();
-    public abstract void attack2();
-    public abstract void attack3();
+    public abstract void attack1(Character opponent);
+    public abstract void attack2(Character opponent);
+    public abstract void attack3(Character opponent);
     
     public boolean evade() {
 	if ((int) (Math.random() * 100) < evasion)
@@ -90,36 +90,36 @@ public abstract class Character{
     
     public void specialize(Character opp, int i){
 	if (state != 2){ // if the opp is not paralyzed
-	    if (evade == true){
+	    if (opp.evade() == true){
 		opp.lowerHP(0);
 	    }
-	    elif (i == 1){
+	    else if (i == 1){
 		special1(opp);
 	    }
-	    elif (i == 2){
+	    else if (i == 2){
 		special2(opp);
 	    }
-	    elif (i == 3){
+	    else if (i == 3){
 		special3(opp);
 	    }
 	}
-	elif (i == 1){
+	else if (i == 1){
 	    special1(opp);
 	}
-	elif (i == 2){
+	else if (i == 2){
 	    special2(opp);
 	}
-	elif (i == 3){
+	else if (i == 3){
 	    special3(opp);
 	}
     }
 
     //poison
-    public abstract void  special1();
+    public abstract void  special1(Character opponent);
     //paralysis
-    public abstract void special2();
+    public abstract void special2(Character opponent);
     //healing
-    public abstract void special3();
+    public abstract void special3(Character opponent);
     
 
     public abstract void defend(); 
