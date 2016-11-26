@@ -118,16 +118,20 @@ public abstract class Character{
 	}
     }
 
-    //poison
+    //poison: decreasing opp's health for 3 rounds
     public void  special1(Character opponent){
+	opponent.state = 1; //changes opponent's state to poison
     }
     
-    //paralysis
+    //paralysis: opp not being able to attack for 3 rounds
     public void special2(Character opponent){
+	opponent.state = 2 ; //changes opponent's state to paralyzed
     }
 
-    //healing
-    public abstract void special3(Character opponent){
+    //healing: increase health
+    public void special3(Character opponent){
+	int temp = health;
+	health = (int)(temp * 1.2);
     }
     
 
@@ -149,5 +153,5 @@ public abstract class Character{
         state = 0; 
     }    
     
-    protected abstract String about(); 
+    protected abstract String about();
 }
