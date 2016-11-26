@@ -124,7 +124,14 @@ public abstract class Character{
     public abstract void special3(Character opponent);
     
 
-    public abstract void defend(); 
+    public void defend() {
+	defense = origDefense * 2;
+	evasion = origEvasion + 10;
+	charge (20);
+	if (charge > 100) {
+	    charge = 100;
+	}
+    }
 
     public void normalize(){
 	defense = origDefense; 

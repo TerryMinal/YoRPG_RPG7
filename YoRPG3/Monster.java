@@ -13,15 +13,24 @@ public class Monster extends Character {
 	attackRating = origAttack = 1;
     }
 
-    public void attack1 (Character enemy) {} 
-    public void attack2 (Character enemy) {}	
-    public void attack3 (Character enemy) {}
+    public void attack1 (Character enemy) {
+	evasion = origEvasion;
+	defense = origDefense;
+    } 
+
+    public void attack2 (Character enemy) {
+	evasion = origEvasion;
+	defense = origDefense;
+    }	
+
+    public void attack3 (Character enemy) {
+	evasion = origEvasion;
+	defense = origDefense;
+    }
 
     public void special1 (Character enemy) {}
     public void special2 (Character enemy) {}
     public void special3 (Character enemy) {}
-
-    public void defend () {}
 
     public String about() {
 	return "I'm a monster. I was designed by game developers to be slain for points."; 

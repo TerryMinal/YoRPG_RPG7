@@ -16,15 +16,22 @@ public class Rogue extends Character {
 
     }
 
-    public void attack1 (Character enemy) {} 
-    public void attack2 (Character enemy) {}	
-    public void attack3 (Character enemy) {}
+    public void attack1 (Character enemy) {
+	evasion = origEvasion;
+	defense = origDefense;
+    } 
+    public void attack2 (Character enemy) {
+	evasion = origEvasion;
+	defense = origDefense;
+    }	
+    public void attack3 (Character enemy) {
+	evasion = origEvasion;
+	defense = origDefense;
+    }
 
     public void special1 (Character enemy) {}
     public void special2 (Character enemy) {}
     public void special3 (Character enemy) {}
-
-    public void defend () {}
     
     public String about() {
 	return "\"...\" said the rogue. Fast and descrete, he strikes when you least expect it. He wears a lot of black too.";

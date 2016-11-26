@@ -18,6 +18,8 @@ public class Monk  extends Character {
 
     // Bald Eagle Barrage
     public void attack1 (Character enemy) {
+	evasion = origEvasion;
+	defense = origDefense;
 	int damage;
 	double speedPercent = 0.5;
 	this.speed = (int) (origSpeed * speedPercent);
@@ -27,6 +29,8 @@ public class Monk  extends Character {
 
     //Whale tsunami
     public void attack2 (Character enemy) {
+	evasion = origEvasion;
+	defense = origDefense;
 	int damage;
 	double speedPercent = 1;
 	this.speed = (int) (origSpeed * speedPercent);
@@ -36,6 +40,8 @@ public class Monk  extends Character {
 
     //Mudslide
     public void attack3 (Character enemy) {
+	evasion = origEvasion;
+	defense = origDefense;
 	int damage;
 	double speedPercent = .65;	
 	this.speed = (int) (origSpeed * speedPercent);
@@ -45,20 +51,7 @@ public class Monk  extends Character {
 
     public void special1 (Character opponent) {}
     public void special2 (Character opponent) {}
-    public void special3 (Character opponent) {}
-
-    public void defend () {
-	defense = origDefense * 2;
-	evasion = origEvasion + 10;
-	charge (20);
-	if (charge > 100) {
-	    charge = 100;
-	}
-	//	if (evade () == true) 
-    }
-	
-    
-    
+    public void special3 (Character opponent) {} 
 
     public String about() {
 	return "He may be meditating. He may be calm. But don't mess with him or else he'll whip open a can of monk fu on you";
