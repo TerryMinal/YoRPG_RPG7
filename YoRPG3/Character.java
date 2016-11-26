@@ -4,11 +4,11 @@ public abstract class Character{
     protected String name; 
     protected int health,origHealth, defense, origDefense; 
     protected int speed, origSpeed, evasion, origEvasion;
-    protected int charge, state;  
+    protected int charge, state;   //int state- 0:normal 1:posioned 2: paralyzed
     protected double attackRating,origAttack;
     
-    //int state- 0:normal 1:posioned 2: paralyzed
-        /*
+
+    /*
       returns boolean indicating living or dead
      */
     public boolean isAlive() {
@@ -33,6 +33,7 @@ public abstract class Character{
     public String getName() {
 	return name; 
     }
+    
     /*
       takes an int parameter, decreases life attribute by that amount
     */
@@ -46,10 +47,11 @@ public abstract class Character{
 	int damage = (int) ((70* attackRating) - (opp.getDefense()));
 	opp.lowerHP(damage);
     } 
-           
+
+    
     public void chooseAttack(Character opp, int i){
-	if (state != 2){
-	    if (opp.evade()  == true){
+	if (state != 2){//if opp is not paralyzed
+	    if (opp.evade()  == true){ //if evade successfully
 	    opp.lowerHP(0);
 	    }
 	    else if (i == 1){
@@ -92,7 +94,7 @@ public abstract class Character{
     
     public void specialize(Character opp, int i){
 	if (state != 2){ // if the opp is not paralyzed
-	    if (opp.evade() == true){
+	    if (opp.evade() == true){ // if evade successfully
 		opp.lowerHP(0);
 	    }
 	    else if (i == 1){
@@ -117,11 +119,16 @@ public abstract class Character{
     }
 
     //poison
-    public abstract void  special1(Character opponent);
+    public void  special1(Character opponent){
+    }
+    
     //paralysis
-    public abstract void special2(Character opponent);
+    public void special2(Character opponent){
+    }
+
     //healing
-    public abstract void special3(Character opponent);
+    public abstract void special3(Character opponent){
+    }
     
 
     public void defend() {
@@ -134,10 +141,12 @@ public abstract class Character{
     }
 
     public void normalize(){
-	defense = origDefense; 
-	attackRating = origAttack;
+	health = origHealth;
+	defense = origDefense;
 	speed = origSpeed;
-	evasion = origEvasion; 
+	evasion = origEvasion;
+	attackRating = origAttack;
+        state = 0; 
     }    
     
     protected abstract String about(); 

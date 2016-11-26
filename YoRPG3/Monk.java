@@ -49,9 +49,6 @@ public class Monk  extends Character {
 	enemy.lowerHP (damage);
     }
 
-    public void special1 (Character opponent) {}
-    public void special2 (Character opponent) {}
-    public void special3 (Character opponent) {} 
 
     public String about() {
 	return "He may be meditating. He may be calm. But don't mess with him or else he'll whip open a can of monk fu on you";

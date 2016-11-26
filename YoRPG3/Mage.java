@@ -54,10 +54,6 @@ public class Mage extends Character {
 	useMP(50);
     }
 
-    public void special1 (Character opp) {}
-    public void special2 (Character opp) {}
-    public void special3 (Character opp) {}
-
     public String about() {
 	return "And with his great staff and white beard he screas \"You shall not pass!\" This character can cast magic and all sorts of magic stuff";
     }

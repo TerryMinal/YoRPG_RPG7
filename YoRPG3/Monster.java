@@ -28,10 +28,6 @@ public class Monster extends Character {
 	defense = origDefense;
     }
 
-    public void special1 (Character enemy) {}
-    public void special2 (Character enemy) {}
-    public void special3 (Character enemy) {}
-
     public String about() {
 	return "I'm a monster. I was designed by game developers to be slain for points."; 
     }

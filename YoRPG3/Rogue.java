@@ -28,10 +28,6 @@ public class Rogue extends Character {
 	evasion = origEvasion;
 	defense = origDefense;
     }
-
-    public void special1 (Character enemy) {}
-    public void special2 (Character enemy) {}
-    public void special3 (Character enemy) {}
     
     public String about() {
 	return "\"...\" said the rogue. Fast and descrete, he strikes when you least expect it. He wears a lot of black too.";
