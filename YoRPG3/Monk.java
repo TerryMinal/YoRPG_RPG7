@@ -8,27 +8,59 @@ public class Monk  extends Character {
     
     public Monk (String name) {
 	this.name = name;
-	health = 500;
-	strength = 85; 
-	defense = origDefense = 60; 
-	attackRating = origAttack = .1; 
+	health = origHealth =  170;
+	defense = origDefense = 50;
+	evasion = origEvasion = 40;
+	attackRating = origAttack = .9;
+	speed = origSpeed =  80;
     }
+
+    // Bald Eagle Barrage
+    public void attack1 (Character enemy) {
+	int damage;
+	double speedPercent = 0.5;
+	this.speed = origSpeed * speedPercent;
+	damage = (65  * this.attackRating) - (enemy.defense);
+	enemy.lowerhp (damage);
+    }
+
+    //Whale tsunami
+    public void attack2 (Character enemy) {
+	int damage;
+	double speedPercent = 1;
+	this.speed = origSpeed * speedPercent;
+	damage = (150  * this.attackRating) - (enemy.defense);
+	enemy.lowerhp (damage);
+    }
+
+    //Mudslide
+    public void attack3 (Character enemy) {
+	int damage;
+	double speedPercent = .65;	
+	this.speed = origSpeed * speedPercent;
+	damage = (100  * this.attackRating) - (enemy.defense);
+	enemy.lowerhp (damage);
+    }
+
+    public void defend () {
+	defense = origDefense * 2;
+	evasion = origEvasion + 10;
+	charge (20);
+	if (charge > 100) {
+	    charge = 100;
+	}
+	//	if (evade () == true) 
+    }
+	
     
-    public void specialize() {
-	defense = (int)(origDefense/.9);
-        attackRating =  origAttack * 2.3; 
-    }
     
-    public void normalize() {
-	defense = origDefense; 
-	attackRating = origAttack;
-    }
 
     public String about() {
 	return "He may be meditating. He may be calm. But don't mess with him or else he'll whip open a can of monk fu on you";
     }
 
 }
+
 
 
     
