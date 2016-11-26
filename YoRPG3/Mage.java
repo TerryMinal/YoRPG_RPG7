@@ -7,13 +7,13 @@ public class Mage extends Character {
     
     public Mage (String name) {
 	this.name = name;
-	health = origHealth = 300;
-	defense = origDefense = 40;
+	health = origHealth = 120;
+	defense = origDefense = 45;
 	speed = origSpeed = 80;
-        evasion = origEvasion = 9;
+        evasion = origEvasion = 35;
 	charge = 0;
 	state = 0;
-	attackRating = origAttack = .2;
+	attackRating = origAttack = .9;
 	MP = 100;
     }
 

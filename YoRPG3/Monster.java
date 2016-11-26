@@ -6,13 +6,11 @@
 public class Monster extends Character {
 
     public Monster() {
-        health = origHealth = 150; 
-        defense = origDefense = 20;
-	evasion = origEvasion = 40;
-        attackRating = origAttack = 3;
-        speed = origSpeed = 80;
-	charge = 0;
+	health = origHealth = 160;
+	defense = origDefense = 55;
+	speed = origSpeed = 80;
 	state = 0;
+	attackRating = origAttack = 1;
     }
 
     public void attack1 (Character enemy) {} 

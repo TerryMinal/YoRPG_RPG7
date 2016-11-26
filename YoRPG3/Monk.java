@@ -10,7 +10,7 @@ public class Monk  extends Character {
 	defense = origDefense = 50;
 	evasion = origEvasion = 40;
 	attackRating = origAttack = .9;
-	speed = origSpeed =  80;
+	speed = origSpeed =  85;
 	charge = 0;
 	state = 0;
 	    

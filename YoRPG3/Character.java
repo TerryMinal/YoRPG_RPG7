@@ -40,9 +40,11 @@ public abstract class Character{
 	int tempHP = health;
 	health = tempHP - damage; 
     }
-    
-    public void normalAttack() {
-	lowerHP(30); 
+
+    // 70 strength, .5 speed percent
+    public void normalAttack(Character opp) {
+	int damage = (int) ((70* attackRating) - (opp.getDefense()));
+	opp.lowerHP(damage);
     } 
            
     public void chooseAttack(Character opp, int i){

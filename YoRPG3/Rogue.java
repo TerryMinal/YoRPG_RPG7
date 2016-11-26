@@ -6,9 +6,14 @@ public class Rogue extends Character {
     
     public Rogue (String name) {
 	this.name = name;
-	health = 200;
-	defense = origDefense = 150; 
-	attackRating = origAttack = .3;
+	health = origHealth = 120;
+	defense = origDefense = 40;
+	speed = origSpeed = 100;
+        evasion = origEvasion = 50;
+	charge = 0;
+	state = 0;
+	attackRating = origAttack = 1.0;
+
     }
 
     public void attack1 (Character enemy) {} 

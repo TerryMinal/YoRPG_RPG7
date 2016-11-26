@@ -6,9 +6,13 @@ public class Warrior extends Character {
     
     public Warrior(String name) {
 	this.name = name;
-	health = 125;
-	defense = origDefense = 45; 
-	attackRating = origAttack = .4; 
+	health = origHealth = 200;
+	defense = origDefense = 55;
+	speed = origSpeed = 55;
+        evasion = origEvasion = 30;
+	charge = 0;
+	state = 0;
+	attackRating = origAttack = .95;
     }
 
     public void attack1 (Character enemy) {}
