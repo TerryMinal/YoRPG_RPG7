@@ -108,7 +108,7 @@ public class YoRPG
 	    System.out.println ("Your classeth hath been set to Warrior by defaulteth");
 	    pat = new Warrior (name);
 	}
-        
+        smaug = new Monster(); 
 
     }//end newGame()
 
@@ -131,13 +131,9 @@ public class YoRPG
 	else {
 	    System.out.println( "\nLo, yonder monster approacheth!" );
 	    
-
 	    while( smaug.isAlive() && pat.isAlive() ) {
-
+		displayStats(); 
 		// Give user the option of using a special attack:
-		// If you land a hit, you incur greater damage,
-		// ...but if you get hit, you take more damage.
-		//edit this section in order to add attack selection
 		try {
 		    choice ="\n" +  pat.getName() + "'s Health: " + pat.health + "\n";
 		    choice += pat.getName() + "'s Charge: " + pat.charge + "\n";
@@ -266,6 +262,13 @@ public class YoRPG
 	}
     }
 
+    private void displayStats() {
+	String stats; 
+	stats = "\nhealth: " + pat.health + "\n";
+	stats += "charge: " + pat.charge; 
+	System.out.println(stats); 
+    }
+    
     public static void main( String[] args )
     {
 	//As usual, move the begin-comment bar down as you progressively 
