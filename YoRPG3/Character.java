@@ -52,7 +52,7 @@ public abstract class Character{
     public void chooseAttack(Character opp, int i){
 	if (state != 2){//if opp is not paralyzed
 	    if (opp.evade()  == true){ //if evade successfully
-	    opp.lowerHP(0);
+		System.out.println("your opponent evaded your attack!"); 
 	    }
 	    else if (i == 1){
 		attack1(opp);
@@ -95,7 +95,7 @@ public abstract class Character{
     public void specialize(Character opp, int i){
 	if (state != 2){ // if the opp is not paralyzed
 	    if (opp.evade() == true){ // if evade successfully
-		opp.lowerHP(0);
+		System.out.println("the opponent evaded your attack!");
 	    }
 	    else if (i == 1){
 		special1(opp);
@@ -104,7 +104,7 @@ public abstract class Character{
 		special2(opp);
 	    }
 	    else if (i == 3){
-		special3(opp);
+		special3();
 	    }
 	}
 	else if (i == 1){
@@ -114,12 +114,12 @@ public abstract class Character{
 	    special2(opp);
 	}
 	else if (i == 3){
-	    special3(opp);
+	    special3();
 	}
     }
 
     //poison: decreasing opp's health for 3 rounds
-    public void  special1(Character opponent){
+    public void special1(Character opponent){
 	opponent.state = 1; //changes opponent's state to poison
     }
     
@@ -129,14 +129,14 @@ public abstract class Character{
     }
 
     //healing: increase health
-    public void special3(Character opponent){
+    public void special3(){
 	int temp = health;
 	health = (int)(temp * 1.2);
     }
     
 
     public void defend() {
-	defense = origDefense * 2;
+	defense = (int) (origDefense * 1.5);
 	evasion = origEvasion + 10;
 	charge (20);
 	if (charge > 100) {
