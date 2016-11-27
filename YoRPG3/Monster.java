@@ -11,21 +11,34 @@ public class Monster extends Character {
 	speed = origSpeed = 80;
 	state = 0;
 	attackRating = origAttack = 1;
+	speedPercent[0] = .46; 
+	speedPercent[1] = .55; 
+	speedPercent[2] = .68;
+	speedPercent[3] = .73; 
     }
 
-    public void attack1 (Character enemy) {
+    public void attack1 (Character opp) {
 	evasion = origEvasion;
 	defense = origDefense;
+	int damage = (int) ((70 * attackRating) - (opp.getDefense()));
+	opp.lowerHP(damage);
+
     } 
 
-    public void attack2 (Character enemy) {
+    public void attack2 (Character opp) {
 	evasion = origEvasion;
 	defense = origDefense;
+	int damage = (int) ((90 * attackRating) - (opp.getDefense()));
+	opp.lowerHP(damage);
+
     }	
 
-    public void attack3 (Character enemy) {
+    public void attack3 (Character opp) {
 	evasion = origEvasion;
 	defense = origDefense;
+	int damage = (int) ((110 * attackRating) - (opp.getDefense()));
+	opp.lowerHP(damage);
+
     }
 
     public String about() {

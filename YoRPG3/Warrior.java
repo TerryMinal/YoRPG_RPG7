@@ -13,11 +13,24 @@ public class Warrior extends Character {
 	charge = 0;
 	state = 0;
 	attackRating = origAttack = .95;
+	speedPercent[0] = .5;
+	speedPercent[1] = .3; 
+	speedPercent[2] = .7; 
+	speedPercent[3] = .5;
     }
 
-    public void attack1 (Character enemy) {}
-    public void attack2 (Character enemy) {}
-    public void attack3 (Character enemy) {}
+    public void attack1 (Character opp) {
+	int damage = (int) ((137 * attackRating) - (opp.getDefense()));
+	opp.lowerHP(damage);
+ }
+    public void attack2 (Character opp) {
+	int damage = (int) ((90 * attackRating) - (opp.getDefense()));
+	opp.lowerHP(damage);
+}
+    public void attack3 (Character opp) {
+	int damage = (int) ((120 * attackRating) - (opp.getDefense()));
+	opp.lowerHP(damage);
+}
 
     public String about() {
 	return "A character with emphasis on power. It's brolicness takes away from it's brains and speed; Indeed this character is the embodiment of brawns over brain";    
