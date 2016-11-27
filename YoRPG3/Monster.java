@@ -11,6 +11,7 @@ public class Monster extends Character {
 	speed = origSpeed = 80;
 	state = 0;
 	attackRating = origAttack = 1;
+	evasion = origEvasion = .38; 
 	speedPercent[0] = .46; 
 	speedPercent[1] = .55; 
 	speedPercent[2] = .68;
