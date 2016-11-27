@@ -158,50 +158,48 @@ public class YoRPG
 		    System.out.print (choice);
 		    
 		    int i = Integer.parseInt( in.readLine() );
+		    // mage's magic is left out, instanceof is the best way to include it
+		    //normal attack
+		    if (i == 1) {
+			choice = "\nChoose your attack:\n" ;
+			choice += "1:\t" + pat.attackName[0] + "\n";
+			choice += "2:\t" + pat.attackName[1] + "\n";
+			choice += "3:\t" + pat.attackName[2] + "\n";
+			choice += "4:\t" + pat.attackName[3];
+			int n = Integer.parseInt( in.readLine() );			
+			damage = pat.chooseAttack(smaug, n); 
+			System.out.print ( "\n" + pat.getName() + " dealt " + damage +" points of damage.");
+	    
+		    }
+		
+		    //choosing special attack
+		    else if (i == 2) {
+			try {
+			    specialChoice =  "\nChoose your special attack:\n" ;
+			    specialChoice += "\t1: Poison\n" ;
+			    specialChoice += "\t2: Paralyze\n" ;
+			    specialChoice +=  "\t3: Heal thyself\n" ;
+			    specialChoice +=  "Selection :" ;
+			    System.out.print (specialChoice);
+			    int j = Integer.parseInt( in.readLine() );
+			    pat.specialize(smaug, j); 
+			}
+
+			catch (IOException e ) { }
+		    }
+		    //defend 
+		    else if (i == 3) {
+			pat.defend();
+			System.out.println ( pat.getName() + " gets into defensive position. His or her evasion and defense increase!" );
+		    }
+		    else if (i == 4) {
+			    pat.specialize(smaug, 4); 
+		    }
 		}
 		catch ( IOException e ) { }
-
-		// mage's magic is left out, instanceof is the best way to include it
-		//normal attack
-		if (i == 1) {
-		    choice = "\nChoose your attack:\n" ;
-		    choice += "1:\t" + pat.attackName[0] + "\n";
-		    choice += "2:\t" + pat.attackName[1] + "\n";
-		    choice += "3:\t" + pat.attackName[2] + "\n";
-		    choice += "4:\t" + pat.attackName[3];
-		    int n = Integer.parseInt( in.readLine() ); 
-		    damage = pat.chooseAttack(smaug, n); 
-		    System.out.print ( "\n" + pat.getName() + " dealt " + damage +" points of damage.");
-	    
-		}
-		
-		//choosing special attack
-		else if (i == 2) {
-		    try {
-			specialChoice =  "\nChoose your special attack:\n" ;
-			specialChoice += "\t1: Poison\n" ;
-		        specialChoice += "\t2: Paralyze\n" ;
-		        specialChoice +=  "\t3: Heal thyself\n" ;
-			specialChoice +=  "Selection :" ;
-			System.out.print (specialChoice);
-			int j = Integer.parseInt( in.readLine() );
-			pat.specialize(smaug, j); 
-		    }
-
-		    catch (IOException e ) { }
-		}
-		//defend 
-		else if (i == 3) {
-		    pat.defend();
-		    System.out.println ( pat.getName() + " gets into defensive position. His or her evasion and defense increase!" );
-		}
-		else if (i == 4) {
-		    try {
-			specialize(smaug, 4); 
-			}
-			catch (IOException e ) { }
-		}
 	    }
+
+
 	       
 		// this is used for testing; generic monster attack
 	int mnA = smaug.attack1 (pat);

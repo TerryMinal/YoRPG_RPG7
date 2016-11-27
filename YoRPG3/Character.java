@@ -56,10 +56,11 @@ public abstract class Character{
     } 
 
     
-    public void chooseAttack(Character opp, int i){
+    public int chooseAttack(Character opp, int i){
 	if (state != 2){//if opp is not paralyzed
 	    if (opp.evade()  == true){ //if evade successfully
-		System.out.println("your opponent evaded your attack!"); 
+		System.out.println("your opponent evaded your attack!");
+		return 0;
 	    }
 	    else if (i == 1){
 		return attack1(opp);
@@ -73,8 +74,10 @@ public abstract class Character{
 	    }
 	    else if (i == 4){
 		return attack4(opp);
+	    }
 	    else {
-		System.out.println("doth gave us the wrong number. Your attack choice has been nullified"); 
+		System.out.println("doth gave us the wrong number. Your attack choice has been nullified");
+		return 0;
 	    }
 	}
 	else if (i == 1){
@@ -88,8 +91,10 @@ public abstract class Character{
 	}
 	else if (i == 4){
 	    return attack4(opp);
+	}
 	else {
-    System.out.println("doth gave us the wrong number. Your attack choice has been nullified"); 
+	    System.out.println("doth gave us the wrong number. Your attack choice has been nullified");
+	    return 0;
 	}
     }
 
@@ -108,7 +113,7 @@ public abstract class Character{
 	charge += amount; 
     }
     
-    public int specialize(Character opp, int i){
+    public void specialize(Character opp, int i){
 	if (i == 3) { 
 	    special3(); 
 	}
