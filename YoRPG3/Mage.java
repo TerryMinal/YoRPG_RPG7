@@ -37,32 +37,50 @@ public class Mage extends Character {
 
     //attack 2: frost strike (30MP, 100 strength, .5 speed percent)
     public int attack2(Character opp){
-	evasion = origEvasion;
-	defense = origDefense;
-	int damage = (int) ((100* attackRating) - (opp.getDefense()));
-	opp.lowerHP(damage);
-	useMP(30);
-	return damage;
+	if (MP < 30){
+	    System.out.println("Normal Attack! Oops... it seems like you don't have enough magic points!");
+	   return attack1(opp);
+	}
+	else{
+	    evasion = origEvasion;
+	    defense = origDefense;
+	    int damage = (int) ((100* attackRating) - (opp.getDefense()));
+	    opp.lowerHP(damage);
+	    useMP(30);
+	    return damage;
+	}
     }
 
     //attack 3: lightning spear(20MP, 95 strength, .75 speed percent)
     public int attack3(Character opp){
-	evasion = origEvasion;
-	defense = origDefense;
-	int damage = (int) ((95* attackRating) - (opp.getDefense()));
-	opp.lowerHP(damage);
-	useMP(20);
-	return damage;
+	if (MP < 20){
+	    System.out.println("Normal Attack! Oops... it seems like you don't have enough magic points!");
+	    return attack1(opp);
+	}
+	else{
+	    evasion = origEvasion;
+	    defense = origDefense;
+	    int damage = (int) ((95* attackRating) - (opp.getDefense()));
+	    opp.lowerHP(damage);
+	    useMP(20);
+	    return damage;
+	}
     }
 
     //attack 4: Jinx of Demon Fire(50MP, 140 strength, .4 speed percent)
     public int attack4(Character opp){
-	evasion = origEvasion;
-	defense = origDefense;
-	int damage = (int) ((140* attackRating) - (opp.getDefense()));
-	opp.lowerHP(damage);
-	useMP(50);
-	return damage;
+	if (MP < 50){
+	    System.out.println("Normal Attack! Oops... it seems like you don't have enough magic points!");
+	    return attack1(opp);
+	}
+	else{
+	    evasion = origEvasion;
+	    defense = origDefense;
+	    int damage = (int) ((140* attackRating) - (opp.getDefense()));
+	    opp.lowerHP(damage);
+	    useMP(50);
+	    return damage;
+	}
     }
 
     public String about() {

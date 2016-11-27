@@ -127,19 +127,6 @@ public abstract class Character{
 		System.out.println("doth gave us the wrong number. Your attack choice has been nullified"); 
 	    }
 	}
-	else if (i == 1){
-	    special1(opp);
-	}
-	else if (i == 2){
-	    special2(opp);
-	}
-	else if (i == 4) {
-	    if (charge == 100)
-		special4(opp); 
-	    else {
-		System.out.println("Not enough charge: you wasted an attack"); 
-	    }
-	}
 	else {
 	    System.out.println("doth been paralyzed. Doth muscles need reworking"); 
 	}	
