@@ -4,7 +4,7 @@
 //2016-11-27
 
 public class Mage extends Character {
-    private int MP;
+    protected int MP;
     public Mage() {
 	this("noName"); 
     }

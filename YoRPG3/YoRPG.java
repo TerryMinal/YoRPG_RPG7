@@ -97,7 +97,7 @@ public class YoRPG
 	}
         else if ( chosenClass == 2) {
 	    pat = new Mage (name);
-	}
+	  }
 	else if ( chosenClass == 3) {
 	    pat = new Monk (name);
 	}
@@ -135,7 +135,7 @@ public class YoRPG
 		displayStats(); 
 		// Give user the option of using a special attack:
 		try {
-		    choice += "Choose your attack:\n" ;
+		    choice = "Choose your attack:\n" ;
 		    choice += "\t1: Attack\n" ;
 		    choice += "\t2: Special Attack\n" ;
 		    choice += "\t3: Defend\n" ;
@@ -262,11 +262,12 @@ public class YoRPG
 
     private void displayStats() {
 	String stats;
-	stats = pat.getName() +"'s stats:\n"
+	stats = pat.getName() +"'s stats:\n";
 	stats += "\nhealth: " + pat.health + "\n";
 	stats += "charge: " + pat.charge;
 	if (pat.identity == 2){
-	    stats += "MP: "+ pat.MP +"\n";
+	    Mage temp = (Mage) pat; 
+	    stats += "MP: "+ temp.MP +"\n";
 	}
 	System.out.println(stats); 
     }
