@@ -29,7 +29,7 @@ public class Monk  extends Character {
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage;
-	damage = (int) (65  * this.attackRating) - (enemy.defense);
+	damage = (int) (65  * attackRating) - (enemy.defense);
 	enemy.lowerHP (damage);
 	return damage;
     }
@@ -39,7 +39,7 @@ public class Monk  extends Character {
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage;
-	damage = (int) (150  * this.attackRating) - (enemy.defense);
+	damage = (int) (150  * attackRating) - (enemy.defense);
 	enemy.lowerHP (damage);
 	return damage;
     }
@@ -49,7 +49,7 @@ public class Monk  extends Character {
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage;
-	damage = (int) (100  * this.attackRating) - (enemy.defense);
+	damage = (int) (100  * attackRating) - (enemy.defense);
 	enemy.lowerHP (damage);
 	return damage;
     }

@@ -130,14 +130,6 @@ public class YoRPG
 	    System.out.println( "\nNothing to see here. Move along!" );
 	else {
 	    System.out.println( "\nLo, yonder monster approacheth!" );
-
-	    //monster or boss?!?!? 5% chance of encountering a boss
-	    if (Math.random() > 0.95){
-		smaug = new Boss();
-	    }
-	    else{
-		smaug = new Monster();
-	    }
 	    
 
 	    while( smaug.isAlive() && pat.isAlive() ) {
@@ -160,7 +152,10 @@ public class YoRPG
 		    System.out.print (choice);
 		    
 		    int i = Integer.parseInt( in.readLine() );
-		    // mage's magic is left out, instanceof is the best way to include it
+		    if (i == 4 && pat.charge < 100) { 
+			System.out.println("close but no cigar. Choose another attack"); 
+			System.out.print(choice); 
+		    }
 		    //normal attack
 		    if (i == 1) {
 			try{
@@ -173,7 +168,7 @@ public class YoRPG
 			    System.out.print ("Selection: ");
 			
 			    int n = Integer.parseInt( in.readLine() );			
-			    damage = pat.chooseAttack(smaug, n); 
+			    damage = doBattle(n);  
 			    System.out.print ( "\n" + pat.getName() + " dealt " + damage +" points of damage.");
 			}
 			catch (IOException e) {}
@@ -187,10 +182,11 @@ public class YoRPG
 			    specialChoice += "\t1: Poison\n" ;
 			    specialChoice += "\t2: Paralyze\n" ;
 			    specialChoice += "\t3: Heal thyself\n" ;
-			    specialChoice += "Selection :" ;
+			    specialChoice += "Selection: " ;
 			    System.out.print (specialChoice);
+			    
 			    int j = Integer.parseInt( in.readLine() );
-			    pat.specialize(smaug, j); 
+			    specializeBattle(j); 
 			}
 
 			catch (IOException e ) { }
@@ -205,31 +201,22 @@ public class YoRPG
 		    }
 		    else {
 			pat.attack1 (smaug);
-			// test string
-			System.out.println (" hi ");
 		    }
-		    smaug.attack1 (pat);
 		    // this is used for testing; generic monster attack
-		    int mnA = smaug.attack1 (pat);
-		    System.out.println( "\n" + "Ye Olde Monster smacked " + pat.getName() + " for " + mnA + " points of damage.");
+		    /*  int mnA = smaug.attack1 (pat);
+			System.out.println( "\n" + "Ye Olde Monster smacked " + pat.getName() + " for " + mnA + " points of damage."); 
 		    if (mnA > 10) {
 			pat.charge += 10;
-		    }
-		    if (pat.charge > 100) {
-			pat.charge = 100;
-		    }
-		    if (smaug.numTurns == 0) {
-			smaug.state = 0;
-		    }
-		    if (smaug.state == 1) {
-			smaug.health -= 15;
-			smaug.numTurns -= 1;
-			System.out.println ( "Monster takes 15 points of damage from poison!" );
-		    }
+			} */
+		    
+		    pat.checkCharge(); 
+		    smaug.checkCharge(); 
+		    pat.checkState(); 
+		    smaug.checkState(); 
 		}
 		catch ( IOException e ) { }
 	    }
-	   
+	    //case analysis of battling
 	    //option 1: you & the monster perish
 	    if ( !smaug.isAlive() && !pat.isAlive() ) {
 		System.out.println( "'Twas an epic battle, to be sure... You cut ye olde monster down, but + with its dying breath ye olde monster laid a fatal blow upon thy skull." );
@@ -253,16 +240,29 @@ public class YoRPG
     }//end playTurn()
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    private void whoGoesFirst(int i) {
+    private int doBattle(int i) {
+	int damage; 
 	double playerSpeed  = pat.speed * pat.speedPercent[i-1]; //speed percent array goes from 0 to 3
-	double monsterSpeed = smaug.speed * smaug.speedPercent[enemyChosenAttack]; 
+	double monsterSpeed = smaug.speed * smaug.speedPercent[smaug.chosenAttack]; 
 	if (playerSpeed > monsterSpeed) {
-	    pat.chooseAttack(smaug, i); 
-	    smaug.chooseAttack(pat, enemyChosenAttack);
+	    damage = pat.chooseAttack(smaug, i); 
+	    smaug.determineAttack(pat); 
 	} 
 	else {
-	    smaug.chooseAttack(pat, enemyChosenAttack); 
-	    pat.chooseAttack(smaug, i); 
+	    smaug.determineAttack(pat); 
+	    damage = pat.chooseAttack(smaug, i); 
+	}
+	return damage;
+    }
+    
+    private void specializeBattle(int i) {
+	if (pat.speed > smaug.speed) { 
+	    pat.specialize(smaug, i);
+	    smaug.determineAttack(pat);
+	}
+	else {
+	    smaug.determineAttack(pat); 
+	    pat.specialize(smaug, i); 
 	}
     }
 

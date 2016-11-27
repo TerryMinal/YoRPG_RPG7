@@ -5,6 +5,8 @@
 
 public class Monster extends Character {
 
+    int chosenAttack; 
+
     public Monster() {
 	health = origHealth = 160;
 	defense = origDefense = 55;
@@ -15,7 +17,8 @@ public class Monster extends Character {
 	speedPercent[0] = .46; 
 	speedPercent[1] = .55; 
 	speedPercent[2] = .68;
-	speedPercent[3] = .73; 
+	speedPercent[3] = .73;
+	chosenAttack = (int) (Math.random() * 3 + 1); 
     }
 
     public int attack2 (Character opp) {
@@ -43,6 +46,31 @@ public class Monster extends Character {
 	opp.lowerHP(damage);
 	return damage;
 
+    }
+
+    public void randomizeAttack() {
+	chosenAttack = (int) (Math.random() * 3 + 1); 
+    }
+
+    public void determineAttack(Character opp) {
+	if (Math.random() >= .7) {
+	    chooseAttack(opp, chosenAttack); 
+	}
+	else {
+	    if (chosenAttack == 4) {
+		if (charge == 100)
+		    specialize(opp, chosenAttack);
+		else {
+		    //shuffles chosenAttack until its not a special super attack
+		    while(chosenAttack == 4) {
+			randomizeAttack();
+		    }
+		}
+	    }
+	    else {
+		specialize(opp, chosenAttack); 
+	    }
+	}
     }
 
     public String about() {

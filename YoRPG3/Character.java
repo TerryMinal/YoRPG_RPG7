@@ -57,7 +57,7 @@ public abstract class Character{
 
     
     public int chooseAttack(Character opp, int i){
-	if (this.state != 2){//if character is not paralyzed
+	if (state != 2){//if character is not paralyzed
 	    if (opp.evade()  == true){ //if opponent's  evade successfully
 		System.out.println(" Your opponent evaded your attack! ");
 		return 0;
@@ -102,37 +102,20 @@ public abstract class Character{
     }
     
     public void specialize(Character opp, int i){
-	if (i == 3) { 
-	    special3(); 
-	}
-	else {
-	    if (state != 2){ // if the opp is not paralyzed
-		if (opp.evade() == true){ // if evade successfully
-		    System.out.println("the opponent evaded your attack!");
-		}
-		else if (i == 1){
-		    special1(opp);
-		}
-		else if (i == 2){
-		    special2(opp);
-		}  
-		else if (i == 4) {
-		    if (charge == 100)
-			special4(opp); 
-		    else {
-			System.out.println("Not enough charge: you wasted an attack"); 
-		    }
-		}
-		else {
-		    System.out.println("doth gave us the wrong number. Your attack choice has been nullified"); 
-		}
+	if (state != 2){ // if player is not paralyzed
+	    if (i == 3) { 
+		special3(); 
+	    }
+	    
+	    if (opp.evade() == true){ // if evade successfully
+		System.out.println("the opponent evaded your attack!");
 	    }
 	    else if (i == 1){
 		special1(opp);
 	    }
 	    else if (i == 2){
 		special2(opp);
-	    }
+	    }  
 	    else if (i == 4) {
 		if (charge == 100)
 		    special4(opp); 
@@ -144,6 +127,22 @@ public abstract class Character{
 		System.out.println("doth gave us the wrong number. Your attack choice has been nullified"); 
 	    }
 	}
+	else if (i == 1){
+	    special1(opp);
+	}
+	else if (i == 2){
+	    special2(opp);
+	}
+	else if (i == 4) {
+	    if (charge == 100)
+		special4(opp); 
+	    else {
+		System.out.println("Not enough charge: you wasted an attack"); 
+	    }
+	}
+	else {
+	    System.out.println("doth gave us the wrong number. Your attack choice has been nullified"); 
+	}	
     }
 
     //poison: decreasing opp's health for 3 rounds
@@ -191,6 +190,29 @@ public abstract class Character{
 	attackRating = origAttack;
         state = 0; 
     }    
+
+    public void checkCharge() {
+	if (charge > 100)
+	    charge = 100; 
+    }
+    
+    public void checkState() {
+	if (state == 0) {
+	    numTurns = 3;
+	}
+	if (numTurns == 0) {
+	    state = 0; 
+	    numTurns = 3;
+	}
+	if (state == 1) {
+	    health -= 10;
+	    numTurns -= 1; 
+	} 
+	if (state == 2) {
+	    numTurns -= 1; 
+	    //paralysis is provided in chooseAttack and specialize
+	}
+    }
     
     protected abstract String about();
 }
