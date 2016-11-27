@@ -17,7 +17,7 @@ public class Monk  extends Character {
     }
 
     // Bald Eagle Barrage
-    public void attack1 (Character enemy) {
+    public int attack1 (Character enemy) {
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage;
@@ -25,10 +25,11 @@ public class Monk  extends Character {
 	this.speed = (int) (origSpeed * speedPercent);
 	damage = (int) (65  * this.attackRating) - (enemy.defense);
 	enemy.lowerHP (damage);
+	return damage;
     }
 
     //Whale tsunami
-    public void attack2 (Character enemy) {
+    public int attack2 (Character enemy) {
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage;
@@ -36,10 +37,11 @@ public class Monk  extends Character {
 	this.speed = (int) (origSpeed * speedPercent);
 	damage = (int) (150  * this.attackRating) - (enemy.defense);
 	enemy.lowerHP (damage);
+	return damage;
     }
 
     //Mudslide
-    public void attack3 (Character enemy) {
+    public int attack3 (Character enemy) {
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage;
@@ -47,6 +49,7 @@ public class Monk  extends Character {
 	this.speed = (int) (origSpeed * speedPercent);
 	damage = (int) (100  * this.attackRating) - (enemy.defense);
 	enemy.lowerHP (damage);
+	return damage;
     }
 
 

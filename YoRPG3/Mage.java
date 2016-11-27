@@ -28,30 +28,33 @@ public class Mage extends Character {
     }
 
     //attack 1: frost strick (30MP, 100 strength, .5 speed percent)
-    public void attack1(Character opp){
+    public int attack1(Character opp){
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage = (int) ((100* attackRating) - (opp.getDefense()));
 	opp.lowerHP(damage);
 	useMP(30);
+	return damage;
     }
 
     //attack 2: lightning spear(20MP, 95 strength, .75 speed percent)
-    public void attack2(Character opp){
+    public int attack2(Character opp){
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage = (int) ((95* attackRating) - (opp.getDefense()));
 	opp.lowerHP(damage);
 	useMP(20);
+	return damage;
     }
 
     //attack 3: Jinx of Demon Fire(50MP, 140 strength, .4 speed percent)
-    public void attack3(Character opp){
+    public int attack3(Character opp){
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage = (int) ((140* attackRating) - (opp.getDefense()));
 	opp.lowerHP(damage);
 	useMP(50);
+	return damage;
     }
 
     public String about() {

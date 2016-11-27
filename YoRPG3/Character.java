@@ -42,10 +42,12 @@ public abstract class Character{
 	health = tempHP - damage; 
     }
 
+
     // 70 strength, .5 speed percent
-    public void normalAttack(Character opp) {
+    public int normalAttack(Character opp) {
 	int damage = (int) ((70* attackRating) - (opp.getDefense()));
 	opp.lowerHP(damage);
+	return damage;
     } 
 
     
@@ -77,9 +79,9 @@ public abstract class Character{
 	}
     }
 
-    public abstract void attack1(Character opponent);
-    public abstract void attack2(Character opponent);
-    public abstract void attack3(Character opponent);
+    public abstract int attack1(Character opponent);
+    public abstract int attack2(Character opponent);
+    public abstract int attack3(Character opponent);
     
     public boolean evade() {
 	if ((int) (Math.random() * 100) < evasion)
