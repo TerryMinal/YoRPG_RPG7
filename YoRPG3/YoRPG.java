@@ -17,12 +17,12 @@ public class YoRPG
     //each round, a Warrior and a Monster will be instantiated...
     private Character pat;   //Is it man or woman?
     private Monster smaug; //Friendly generic monster name?
-
     private int moveCount;
     private boolean gameOver;
     private int difficulty;
     private int chosenClass;
-
+    private int enemyChosenAttack = (int) (Math.random() * 3); 
+    
     private InputStreamReader isr;
     private BufferedReader in;
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -205,6 +205,18 @@ public class YoRPG
 	//	  ================================================*/
     }//end main
 
+    private void whoGoesFirst(Monster opp, int i) {
+	double playerSpeed  = pat.speed * pat.speedPercent[i];
+	double monsterSpeed = opp.speed * opp.speedPercent[enemyChosenAttack]; 
+	if (playerSpeed > monsterSpeed) {
+	    pat.chooseAttack(opp, i); 
+	    opp.chooseAttack(pat, enemyChosenAttack);
+	} 
+	else {
+	    opp.chooseAttack(pat, enemyChosenAttack); 
+	    pat.chooseAttack(opp, i); 
+	}
+    }
 }//end class YoRPG
 
 
