@@ -115,7 +115,7 @@ public class YoRPG
 
     /*=============================================
       boolean playTurn -- simulates a round of combat
-      pre:  Warrior pat has been initialized
+      pre:  Character pat has been initialized
       post: Returns true if player wins (monster dies).
       Returns false if monster wins (player dies).
       =============================================*/
@@ -136,6 +136,7 @@ public class YoRPG
 		// Give user the option of using a special attack:
 		// If you land a hit, you incur greater damage,
 		// ...but if you get hit, you take more damage.
+		//edit this section in order to add attack selection
 		try {
 		    System.out.println( "\nDo you feel lucky?" );
 		    System.out.println( "\t1: Nay.\n\t2: Aye!" );
@@ -182,6 +183,18 @@ public class YoRPG
     }//end playTurn()
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+    private void whoGoesFirst(int i) {
+	double playerSpeed  = pat.speed * pat.speedPercent[i];
+	double monsterSpeed = smaug.speed * smaug.speedPercent[enemyChosenAttack]; 
+	if (playerSpeed > monsterSpeed) {
+	    pat.chooseAttack(smaug, i); 
+	    smaug.chooseAttack(pat, enemyChosenAttack);
+	} 
+	else {
+	    smaug.chooseAttack(pat, enemyChosenAttack); 
+	    pat.chooseAttack(smaug, i); 
+	}
+    }
 
     public static void main( String[] args )
     {
@@ -205,18 +218,6 @@ public class YoRPG
 	//	  ================================================*/
     }//end main
 
-    private void whoGoesFirst(Monster opp, int i) {
-	double playerSpeed  = pat.speed * pat.speedPercent[i];
-	double monsterSpeed = opp.speed * opp.speedPercent[enemyChosenAttack]; 
-	if (playerSpeed > monsterSpeed) {
-	    pat.chooseAttack(opp, i); 
-	    opp.chooseAttack(pat, enemyChosenAttack);
-	} 
-	else {
-	    opp.chooseAttack(pat, enemyChosenAttack); 
-	    pat.chooseAttack(opp, i); 
-	}
-    }
 }//end class YoRPG
 
 
