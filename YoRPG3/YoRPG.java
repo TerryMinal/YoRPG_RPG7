@@ -161,14 +161,19 @@ public class YoRPG
 		    // mage's magic is left out, instanceof is the best way to include it
 		    //normal attack
 		    if (i == 1) {
-			choice = "\nChoose your attack:\n" ;
-			choice += "1:\t" + pat.attackName[0] + "\n";
-			choice += "2:\t" + pat.attackName[1] + "\n";
-			choice += "3:\t" + pat.attackName[2] + "\n";
-			choice += "4:\t" + pat.attackName[3];
-			int n = Integer.parseInt( in.readLine() );			
-			damage = pat.chooseAttack(smaug, n); 
-			System.out.print ( "\n" + pat.getName() + " dealt " + damage +" points of damage.");
+			try{
+			    choice = "\nChoose your attack:\n" ;
+			    choice += "1:\t" + pat.attackName[0] + "\n";
+			    choice += "2:\t" + pat.attackName[1] + "\n";
+			    choice += "3:\t" + pat.attackName[2] + "\n";
+			    choice += "4:\t" + pat.attackName[3];
+			    System.out.println(choice);
+			
+			    int n = Integer.parseInt( in.readLine() );			
+			    damage = pat.chooseAttack(smaug, n); 
+			    System.out.print ( "\n" + pat.getName() + " dealt " + damage +" points of damage.");
+			}
+			catch (IOException e) {}
 	    
 		    }
 		
