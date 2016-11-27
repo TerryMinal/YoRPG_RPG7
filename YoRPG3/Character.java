@@ -81,7 +81,7 @@ public abstract class Character{
 	    }
 	}
 	else {
-	    System.out.println (" You have been paralyzed! You cannot move! ");
+	    System.out.println("doth been paralyzed. Doth muscles need reworking"); 
 	    return 0;
 	}
     }
@@ -141,7 +141,7 @@ public abstract class Character{
 	    }
 	}
 	else {
-	    System.out.println("doth gave us the wrong number. Your attack choice has been nullified"); 
+	    System.out.println("doth been paralyzed. Doth muscles need reworking"); 
 	}	
     }
 
