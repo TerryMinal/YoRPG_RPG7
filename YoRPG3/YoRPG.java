@@ -137,6 +137,9 @@ public class YoRPG
 		try {
 		    choice ="\n" +  pat.getName() + "'s Health: " + pat.health + "\n";
 		    choice += pat.getName() + "'s Charge: " + pat.charge + "\n";
+		    if ((pat.identity).equals("Mage")){
+			choice += pat.getName()+"'s MP: "+ pat.MP +"\n";
+		    }
 		    choice += "Choose your attack:\n" ;
 		    choice += "\t1: Attack\n" ;
 		    choice += "\t2: Special Attack\n" ;

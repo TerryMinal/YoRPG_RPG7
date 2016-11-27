@@ -1,7 +1,7 @@
 //Team RPG7
 //Terry Guan, Xin Yi Chen, Alitquan Mallick
 public abstract class Character{
-    protected String name; 
+    protected String name,identity; 
     protected int health,origHealth, defense, origDefense; 
     protected int charge, state, numTurns; //int state- 0:normal 1:posoined 2: paralyzed | int numTurns: number of turns state inflicted
     protected double attackRating, origAttack, speed, origSpeed, evasion, origEvasion;

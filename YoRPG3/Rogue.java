@@ -21,6 +21,7 @@ public class Rogue extends Character {
 	attackName[1]="Juu Nin Too Iro";
 	attackName[2]="Go To Ra Shuriken";
 	attackName[3]="Kami no Ninjato";
+	identity="Rogue";
     }
 
     public int attack2 (Character enemy) {

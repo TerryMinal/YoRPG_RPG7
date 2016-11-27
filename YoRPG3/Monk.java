@@ -21,6 +21,7 @@ public class Monk  extends Character {
 	attackName[1]="Bald Eagle Barrage";
 	attackName[2]="Whale Tsunami";
 	attackName[3]="Mudslide";
+	identity="Monk";
 	    
     }
 

@@ -11,7 +11,8 @@ public class Boss extends Monster {
 	speedPercent[0] = .55;
 	speedPercent[1] = .67; 
 	speedPercent[2] = .74;
-	speedPercent[3] = .82; 
+	speedPercent[3] = .82;
+	identity="Boss";
     }
 
     public int attack2 (Character opp) {
