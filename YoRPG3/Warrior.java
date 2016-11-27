@@ -19,17 +19,20 @@ public class Warrior extends Character {
 	speedPercent[3] = .5;
     }
 
-    public void attack1 (Character opp) {
+    public int attack1 (Character opp) {
 	int damage = (int) ((137 * attackRating) - (opp.getDefense()));
 	opp.lowerHP(damage);
+	return damage;
  }
-    public void attack2 (Character opp) {
+    public int attack2 (Character opp) {
 	int damage = (int) ((90 * attackRating) - (opp.getDefense()));
 	opp.lowerHP(damage);
+	return damage;
 }
-    public void attack3 (Character opp) {
+    public int attack3 (Character opp) {
 	int damage = (int) ((120 * attackRating) - (opp.getDefense()));
 	opp.lowerHP(damage);
+	return damage;
 }
 
     public String about() {
