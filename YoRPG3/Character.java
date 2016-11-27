@@ -1,12 +1,20 @@
 //Team RPG7
 //Terry Guan, Xin Yi Chen, Alitquan Mallick
 public abstract class Character{
-    protected String name,identity; 
-    protected int health,origHealth, defense, origDefense; 
+    
+    protected String name;
+    protected int identity;
+    /*identity: 1=warrior, 2=mage,3=monk,4=rogue,5=monster,6=boss
+     */
+    
+    protected int health,origHealth, defense, origDefense;
+    
     protected int charge, state, numTurns; //int state- 0:normal 1:posoined 2: paralyzed | int numTurns: number of turns state inflicted
+    
     protected double attackRating, origAttack, speed, origSpeed, evasion, origEvasion;
     //currentSpeed is the character speed * speed percent
-    //list of speed percent of each Character: add to subclasses 
+    //list of speed percent of each Character: add to subclasses
+    
     protected double[] speedPercent = new double[4];
 
     //list of the attackNames for each character

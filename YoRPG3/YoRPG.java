@@ -135,11 +135,6 @@ public class YoRPG
 		displayStats(); 
 		// Give user the option of using a special attack:
 		try {
-		    choice ="\n" +  pat.getName() + "'s Health: " + pat.health + "\n";
-		    choice += pat.getName() + "'s Charge: " + pat.charge + "\n";
-		    if ((pat.identity).equals("Mage")){
-			choice += pat.getName()+"'s MP: "+ pat.MP +"\n";
-		    }
 		    choice += "Choose your attack:\n" ;
 		    choice += "\t1: Attack\n" ;
 		    choice += "\t2: Special Attack\n" ;
@@ -266,9 +261,13 @@ public class YoRPG
     }
 
     private void displayStats() {
-	String stats; 
-	stats = "\nhealth: " + pat.health + "\n";
-	stats += "charge: " + pat.charge; 
+	String stats;
+	stats = pat.getName() +"'s stats:\n"
+	stats += "\nhealth: " + pat.health + "\n";
+	stats += "charge: " + pat.charge;
+	if (pat.identity == 2){
+	    stats += "MP: "+ pat.MP +"\n";
+	}
 	System.out.println(stats); 
     }
     

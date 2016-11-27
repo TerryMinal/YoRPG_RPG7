@@ -19,7 +19,7 @@ public class Monster extends Character {
 	speedPercent[2] = .68;
 	speedPercent[3] = .73;
 	chosenAttack = (int) (Math.random() * 3 + 1);
-	identity="Monster";
+	identity=5;
     }
 
     public int attack2 (Character opp) {

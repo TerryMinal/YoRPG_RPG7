@@ -21,7 +21,7 @@ public class Warrior extends Character {
 	attackName[1]="The Swing of Strength";
 	attackName[2]="The Swing of Speed";
 	attackName[3]="Muscle Flexed Lunge";
-	identity="Warrior";
+	identity=1;
     }
 
     public int attack2 (Character opp) {

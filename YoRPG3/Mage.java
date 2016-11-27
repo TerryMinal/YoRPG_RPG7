@@ -23,7 +23,7 @@ public class Mage extends Character {
 	attackName[1]="Frost Strick";
 	attackName[2]="Lightning Spear";
 	attackName[3]="Jinx of Demon Fire";
-	identity="Mage";
+	identity=2;
     }
 
     public void getMP(int num){
