@@ -147,14 +147,16 @@ public class YoRPG
 		// ...but if you get hit, you take more damage.
 		//edit this section in order to add attack selection
 		try {
-		    choice = "\nChoose your attack:\n" ;
-		    choice += "\t1: Normal Attack\n" ;
+		    choice ="\n" +  pat.getName() + "'s Health: " + pat.health + "\n";
+		    choice += pat.getName() + "'s Charge: " + pat.charge + "\n";
+		    choice += "Choose your attack:\n" ;
+		    choice += "\t1: Attack\n" ;
 		    choice += "\t2: Special Attack\n" ;
 		    choice += "\t3: Defend\n" ;
-		    choice += "Selection: ";
-		    if (pat.charge == 100) {
-			choice += "\t4: Special";
+		     if (pat.charge == 100) {
+			choice += "\t4: Special\n";
 		    }
+		    choice += "Selection: ";
 		    System.out.print (choice);
 		    
 		    int i = Integer.parseInt( in.readLine() );
@@ -163,11 +165,12 @@ public class YoRPG
 		    if (i == 1) {
 			try{
 			    choice = "\nChoose your attack:\n" ;
-			    choice += "1:\t" + pat.attackName[0] + "\n";
-			    choice += "2:\t" + pat.attackName[1] + "\n";
-			    choice += "3:\t" + pat.attackName[2] + "\n";
-			    choice += "4:\t" + pat.attackName[3];
+			    choice += "\t1: " + pat.attackName[0] + "\n";
+			    choice += "\t2: " + pat.attackName[1] + "\n";
+			    choice += "\t3: " + pat.attackName[2] + "\n";
+			    choice += "\t4: " + pat.attackName[3];
 			    System.out.println(choice);
+			    System.out.print ("Selection: ");
 			
 			    int n = Integer.parseInt( in.readLine() );			
 			    damage = pat.chooseAttack(smaug, n); 
@@ -183,8 +186,8 @@ public class YoRPG
 			    specialChoice =  "\nChoose your special attack:\n" ;
 			    specialChoice += "\t1: Poison\n" ;
 			    specialChoice += "\t2: Paralyze\n" ;
-			    specialChoice +=  "\t3: Heal thyself\n" ;
-			    specialChoice +=  "Selection :" ;
+			    specialChoice += "\t3: Heal thyself\n" ;
+			    specialChoice += "Selection :" ;
 			    System.out.print (specialChoice);
 			    int j = Integer.parseInt( in.readLine() );
 			    pat.specialize(smaug, j); 
@@ -200,15 +203,33 @@ public class YoRPG
 		    else if (i == 4) {
 			    pat.specialize(smaug, 4); 
 		    }
+		    else {
+			pat.attack1 (smaug);
+			// test string
+			System.out.println (" hi ");
+		    }
+		    smaug.attack1 (pat);
+		    // this is used for testing; generic monster attack
+		    int mnA = smaug.attack1 (pat);
+		    System.out.println( "\n" + "Ye Olde Monster smacked " + pat.getName() + " for " + mnA + " points of damage.");
+		    if (mnA > 10) {
+			pat.charge += 10;
+		    }
+		    if (pat.charge > 100) {
+			pat.charge = 100;
+		    }
+		    if (smaug.numTurns == 0) {
+			smaug.state = 0;
+		    }
+		    if (smaug.state == 1) {
+			smaug.health -= 15;
+			smaug.numTurns -= 1;
+			System.out.println ( "Monster takes 15 points of damage from poison!" );
+		    }
 		}
 		catch ( IOException e ) { }
 	    }
-
-
-	       
-		// this is used for testing; generic monster attack
-	int mnA = smaug.attack1 (pat);
-	System.out.println( "\n" + "Ye Olde Monster smacked " + pat.getName() + " for " + mnA + " points of damage.");
+	   
 	    //option 1: you & the monster perish
 	    if ( !smaug.isAlive() && !pat.isAlive() ) {
 		System.out.println( "'Twas an epic battle, to be sure... You cut ye olde monster down, but + with its dying breath ye olde monster laid a fatal blow upon thy skull." );

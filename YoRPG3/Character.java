@@ -3,7 +3,7 @@
 public abstract class Character{
     protected String name; 
     protected int health,origHealth, defense, origDefense; 
-    protected int charge, state;   //int state- 0:normal 1:posioned 2: paralyzed
+    protected int charge, state, numTurns; //int state- 0:normal 1:posoined 2: paralyzed | int numTurns: number of turns state inflicted
     protected double attackRating, origAttack, speed, origSpeed, evasion, origEvasion;
     //currentSpeed is the character speed * speed percent
     //list of speed percent of each Character: add to subclasses 
@@ -57,9 +57,9 @@ public abstract class Character{
 
     
     public int chooseAttack(Character opp, int i){
-	if (state != 2){//if opp is not paralyzed
-	    if (opp.evade()  == true){ //if evade successfully
-		System.out.println("your opponent evaded your attack!");
+	if (this.state != 2){//if character is not paralyzed
+	    if (opp.evade()  == true){ //if opponent's  evade successfully
+		System.out.println(" Your opponent evaded your attack! ");
 		return 0;
 	    }
 	    else if (i == 1){
@@ -80,20 +80,8 @@ public abstract class Character{
 		return 0;
 	    }
 	}
-	else if (i == 1){
-	    return attack1(opp);
-	}
-	else if (i == 2){
-	    return attack2(opp);
-	}	
-	else if (i == 3){
-	    return attack3(opp);
-	}
-	else if (i == 4){
-	    return attack4(opp);
-	}
 	else {
-	    System.out.println("doth gave us the wrong number. Your attack choice has been nullified");
+	    System.out.println (" You have been paralyzed! You cannot move! ");
 	    return 0;
 	}
     }
@@ -161,12 +149,14 @@ public abstract class Character{
     //poison: decreasing opp's health for 3 rounds
     public void special1(Character opponent){
 	opponent.state = 1;  //changes opponent's state to poison
+	opponent.numTurns = 3;
 	System.out.println( "\n" + "enemy has been poisioned");
     }
     
     //paralysis: opp not being able to attack for 3 rounds
     public void special2(Character opponent){
 	opponent.state = 2 ; //changes opponent's state to paralyzed
+	opponent.numTurns = 3;
 	System.out.println( "\n" + "enemy has been paralyzed");
     }
 
@@ -174,7 +164,7 @@ public abstract class Character{
     public void special3(){
 	int temp = health;
 	health = (int)(temp * 1.2);
-	System.out.println( "\n" + "Life gained"); 
+	System.out.println( "\n" + "Health  gained"); 
     }
     
     public void special4(Character opp) {
