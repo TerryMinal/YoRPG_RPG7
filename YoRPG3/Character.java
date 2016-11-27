@@ -3,11 +3,11 @@
 public abstract class Character{
     protected String name; 
     protected int health,origHealth, defense, origDefense; 
-    protected int speed, origSpeed, evasion, origEvasion;
     protected int charge, state;   //int state- 0:normal 1:posioned 2: paralyzed
-    protected double attackRating,origAttack;
-    
-
+    protected double attackRating, origAttack, speed, origSpeed, evasion, origEvasion, currentSpeed;
+    //currentSpeed is the character speed * speed percent
+    //list of speed percent of each Character
+    protected double[] speedPercent = new double[4]; 
     /*
       returns boolean indicating living or dead
      */
@@ -147,7 +147,7 @@ public abstract class Character{
     public void normalize(){
 	health = origHealth;
 	defense = origDefense;
-	speed = origSpeed;
+	speed = currentSpeed = origSpeed;
 	evasion = origEvasion;
 	attackRating = origAttack;
         state = 0; 

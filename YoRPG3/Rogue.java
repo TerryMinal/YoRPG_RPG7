@@ -13,20 +13,31 @@ public class Rogue extends Character {
 	charge = 0;
 	state = 0;
 	attackRating = origAttack = 1.0;
-
+	speedPercent[0] = .7; 
+	speedPercent[1] = .9;
+	speedPercent[2] = 1; 
+	speedPercent[3] = .86; 
     }
 
     public void attack1 (Character enemy) {
 	evasion = origEvasion;
 	defense = origDefense;
+	int damage = (int) ((115 * attackRating) - (enemy.getDefense()));
+	enemy.lowerHP(damage);
     } 
+
     public void attack2 (Character enemy) {
 	evasion = origEvasion;
 	defense = origDefense;
-    }	
+	int damage = (int) ((105 * attackRating) - (enemy.getDefense()));
+	enemy.lowerHP(damage);
+    }
+	
     public void attack3 (Character enemy) {
 	evasion = origEvasion;
 	defense = origDefense;
+	int damage = (int) ((128 * attackRating) - (enemy.getDefense()));
+	enemy.lowerHP(damage);
     }
     
     public String about() {
