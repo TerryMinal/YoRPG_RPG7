@@ -131,7 +131,14 @@ public class YoRPG
 	else {
 	    System.out.println( "\nLo, yonder monster approacheth!" );
 
-	    smaug = new Monster();
+	    //monster or boss?!?!? 5% chance of encountering a boss
+	    if (Math.random() > 0.95){
+		smaug = new Boss();
+	    }
+	    else{
+		smaug = new Monster();
+	    }
+	    
 
 	    while( smaug.isAlive() && pat.isAlive() ) {
 
@@ -157,7 +164,6 @@ public class YoRPG
 		// mage's magic is left out, instanceof is the best way to include it
 		//normal attack
 		if (i == 1) {
-		    //attackName is an array of Strings of names of the attacks. Add to each subclass
 		    choice = "\nChoose your attack:\n" ;
 		    choice += "1:\t" + pat.attackName[0] + "\n";
 		    choice += "2:\t" + pat.attackName[1] + "\n";
@@ -208,6 +214,8 @@ public class YoRPG
 	    //option 2: you slay the beast
 	    else if ( !smaug.isAlive() ) {
 		System.out.println( "HuzzaaH! Ye olde monster hath been slain!" );
+	        pat.charge(30);//winning gains charge
+		pat.normalize(); // reset all stat after each battle
 		return true;
 	    }
 	    //option 3: the beast slays you
