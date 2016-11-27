@@ -21,7 +21,7 @@ public class YoRPG
     private boolean gameOver;
     private int difficulty;
     private int chosenClass;
-    private int enemyChosenAttack = (int) (Math.random() * 3); 
+    private int enemyChosenAttack = (int) (Math.random()*4.1);//range from 0 to 4 
     
     private InputStreamReader isr;
     private BufferedReader in;
@@ -198,7 +198,7 @@ public class YoRPG
 	    }
 	       
 		// this is used for testing; generic monster attack
-	int mnA = smaug.normalAttack (pat);
+	int mnA = smaug.attack1 (pat);
 	System.out.println( "\n" + "Ye Olde Monster smacked " + pat.getName() + " for " + mnA + " points of damage.");
 	    //option 1: you & the monster perish
 	    if ( !smaug.isAlive() && !pat.isAlive() ) {
@@ -222,7 +222,7 @@ public class YoRPG
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     private void whoGoesFirst(int i) {
-	double playerSpeed  = pat.speed * pat.speedPercent[i];
+	double playerSpeed  = pat.speed * pat.speedPercent[i-1]; //speed percent array goes from 0 to 3
 	double monsterSpeed = smaug.speed * smaug.speedPercent[enemyChosenAttack]; 
 	if (playerSpeed > monsterSpeed) {
 	    pat.chooseAttack(smaug, i); 

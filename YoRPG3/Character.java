@@ -7,7 +7,10 @@ public abstract class Character{
     protected double attackRating, origAttack, speed, origSpeed, evasion, origEvasion;
     //currentSpeed is the character speed * speed percent
     //list of speed percent of each Character: add to subclasses 
-    protected double[] speedPercent = new double[4]; 
+    protected double[] speedPercent = new double[4];
+
+    //list of the attackNames for each character
+    protected String[] attackName = new String[4];
     /*
       returns boolean indicating living or dead
      */
@@ -44,7 +47,9 @@ public abstract class Character{
 
 
     // 70 strength, .5 speed percent
-    public int normalAttack(Character opp) {
+    public int attack1(Character opp) {
+	evasion = origEvasion;
+	defense = origDefense;
 	int damage = (int) ((70* attackRating) - (opp.getDefense()));
 	opp.lowerHP(damage);
 	return damage;
@@ -66,7 +71,8 @@ public abstract class Character{
 	    else if (i == 3){
 		return attack3(opp);
 	    }
-
+	    else if (i == 4){
+		return attack4(opp);
 	    else {
 		System.out.println("doth gave us the wrong number. Your attack choice has been nullified"); 
 	    }
@@ -80,14 +86,16 @@ public abstract class Character{
 	else if (i == 3){
 	    return attack3(opp);
 	}
+	else if (i == 4){
+	    return attack4(opp);
 	else {
     System.out.println("doth gave us the wrong number. Your attack choice has been nullified"); 
 	}
     }
 
-    public abstract int attack1(Character opponent);
     public abstract int attack2(Character opponent);
     public abstract int attack3(Character opponent);
+    public abstract int attack4(Character opponent);
     
     public boolean evade() {
 	if ((int) (Math.random() * 100) < evasion)

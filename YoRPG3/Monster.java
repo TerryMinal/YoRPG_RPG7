@@ -18,7 +18,7 @@ public class Monster extends Character {
 	speedPercent[3] = .73; 
     }
 
-    public int attack1 (Character opp) {
+    public int attack2 (Character opp) {
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage = (int) ((70 * attackRating) - (opp.getDefense()));
@@ -27,7 +27,7 @@ public class Monster extends Character {
 
     } 
 
-    public int attack2 (Character opp) {
+    public int attack3 (Character opp) {
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage = (int) ((90 * attackRating) - (opp.getDefense()));
@@ -36,7 +36,7 @@ public class Monster extends Character {
 
     }	
 
-    public int attack3 (Character opp) {
+    public int attack4 (Character opp) {
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage = (int) ((110 * attackRating) - (opp.getDefense()));

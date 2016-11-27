@@ -13,13 +13,17 @@ public class Rogue extends Character {
 	charge = 0;
 	state = 0;
 	attackRating = origAttack = 1.0;
-	speedPercent[0] = .7; 
+	speedPercent[0] = .5; 
 	speedPercent[1] = .9;
 	speedPercent[2] = 1; 
-	speedPercent[3] = .86; 
+	speedPercent[3] = .86;
+	attackName[0]="Normal Attack";
+	attackName[1]="Juu Nin Too Iro";
+	attackName[2]="Go To Ra Shuriken";
+	attackName[3]="Kami no Ninjato";
     }
 
-    public int attack1 (Character enemy) {
+    public int attack2 (Character enemy) {
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage = (int) ((115 * attackRating) - (enemy.getDefense()));
@@ -27,7 +31,7 @@ public class Rogue extends Character {
 	return damage;
     } 
 
-    public int attack2 (Character enemy) {
+    public int attack3 (Character enemy) {
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage = (int) ((105 * attackRating) - (enemy.getDefense()));
@@ -35,7 +39,7 @@ public class Rogue extends Character {
 	return damage;
     }
 	
-    public int attack3 (Character enemy) {
+    public int attack4 (Character enemy) {
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage = (int) ((128 * attackRating) - (enemy.getDefense()));

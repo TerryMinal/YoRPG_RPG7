@@ -15,6 +15,14 @@ public class Mage extends Character {
 	state = 0;
 	attackRating = origAttack = .9;
 	MP = 100;
+	speedPercent[0] = .5; 
+	speedPercent[1] = 1.0;
+	speedPercent[2] = .75; 
+	speedPercent[3] = .4;
+	attackName[0]="Normal Attack";
+	attackName[1]="Frost Strick";
+	attackName[2]="Lightning Spear";
+	attackName[3]="Jinx of Demon Fire";
     }
 
     public void getMP(int num){
@@ -27,8 +35,8 @@ public class Mage extends Character {
 	MP = tempMP - num;
     }
 
-    //attack 1: frost strick (30MP, 100 strength, .5 speed percent)
-    public int attack1(Character opp){
+    //attack 2: frost strike (30MP, 100 strength, .5 speed percent)
+    public int attack2(Character opp){
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage = (int) ((100* attackRating) - (opp.getDefense()));
@@ -37,8 +45,8 @@ public class Mage extends Character {
 	return damage;
     }
 
-    //attack 2: lightning spear(20MP, 95 strength, .75 speed percent)
-    public int attack2(Character opp){
+    //attack 3: lightning spear(20MP, 95 strength, .75 speed percent)
+    public int attack3(Character opp){
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage = (int) ((95* attackRating) - (opp.getDefense()));
@@ -47,8 +55,8 @@ public class Mage extends Character {
 	return damage;
     }
 
-    //attack 3: Jinx of Demon Fire(50MP, 140 strength, .4 speed percent)
-    public int attack3(Character opp){
+    //attack 4: Jinx of Demon Fire(50MP, 140 strength, .4 speed percent)
+    public int attack4(Character opp){
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage = (int) ((140* attackRating) - (opp.getDefense()));

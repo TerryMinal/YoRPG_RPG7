@@ -13,40 +13,42 @@ public class Monk  extends Character {
 	speed = origSpeed =  85;
 	charge = 0;
 	state = 0;
+	speedPercent[0] = .5; 
+	speedPercent[1] = 1.0;
+	speedPercent[2] = .2; 
+	speedPercent[3] = .65;
+	attackName[0]="Normal Attack";
+	attackName[1]="Bald Eagle Barrage";
+	attackName[2]="Whale Tsunami";
+	attackName[3]="Mudslide";
 	    
     }
 
     // Bald Eagle Barrage
-    public int attack1 (Character enemy) {
+    public int attack2 (Character enemy) {
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage;
-	double speedPercent = 0.5;
-	this.speed = (int) (origSpeed * speedPercent);
 	damage = (int) (65  * this.attackRating) - (enemy.defense);
 	enemy.lowerHP (damage);
 	return damage;
     }
 
     //Whale tsunami
-    public int attack2 (Character enemy) {
+    public int attack3 (Character enemy) {
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage;
-	double speedPercent = 1;
-	this.speed = (int) (origSpeed * speedPercent);
 	damage = (int) (150  * this.attackRating) - (enemy.defense);
 	enemy.lowerHP (damage);
 	return damage;
     }
 
     //Mudslide
-    public int attack3 (Character enemy) {
+    public int attack4 (Character enemy) {
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage;
-	double speedPercent = .65;	
-	this.speed = (int) (origSpeed * speedPercent);
 	damage = (int) (100  * this.attackRating) - (enemy.defense);
 	enemy.lowerHP (damage);
 	return damage;

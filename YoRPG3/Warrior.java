@@ -17,19 +17,31 @@ public class Warrior extends Character {
 	speedPercent[1] = .3; 
 	speedPercent[2] = .7; 
 	speedPercent[3] = .5;
+	attackName[0]="Normal Attack";
+	attackName[1]="The Swing of Strength";
+	attackName[2]="The Swing of Speed";
+	attackName[3]="Muscle Flexed Lunge";
     }
 
-    public int attack1 (Character opp) {
+    public int attack2 (Character opp) {
+	evasion = origEvasion;
+	defense = origDefense;
 	int damage = (int) ((137 * attackRating) - (opp.getDefense()));
 	opp.lowerHP(damage);
 	return damage;
  }
-    public int attack2 (Character opp) {
+    
+    public int attack3 (Character opp) {
+	evasion = origEvasion;
+	defense = origDefense;
 	int damage = (int) ((90 * attackRating) - (opp.getDefense()));
 	opp.lowerHP(damage);
 	return damage;
 }
-    public int attack3 (Character opp) {
+    
+    public int attack4 (Character opp) {
+	evasion = origEvasion;
+	defense = origDefense;
 	int damage = (int) ((120 * attackRating) - (opp.getDefense()));
 	opp.lowerHP(damage);
 	return damage;
