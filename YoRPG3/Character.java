@@ -57,25 +57,31 @@ public abstract class Character{
 		System.out.println("your opponent evaded your attack!"); 
 	    }
 	    else if (i == 1){
-		attack1(opp);
+		return attack1(opp);
 	    }
 	    else if(i == 2){
-		attack2(opp);
+		return attack2(opp);
 	    }
 	
 	    else if (i == 3){
-		attack3(opp);
+		return attack3(opp);
+	    }
+
+	    else {
+		System.out.println("doth gave us the wrong number. Your attack choice has been nullified"); 
 	    }
 	}
 	else if (i == 1){
-	    attack1(opp);
+	    return attack1(opp);
 	}
 	else if (i == 2){
-	    attack2(opp);
-	}
-	
+	    return attack2(opp);
+	}	
 	else if (i == 3){
-	    attack3(opp);
+	    return attack3(opp);
+	}
+	else {
+    System.out.println("doth gave us the wrong number. Your attack choice has been nullified"); 
 	}
     }
 
@@ -94,10 +100,31 @@ public abstract class Character{
 	charge += amount; 
     }
     
-    public void specialize(Character opp, int i){
-	if (state != 2){ // if the opp is not paralyzed
-	    if (opp.evade() == true){ // if evade successfully
-		System.out.println("the opponent evaded your attack!");
+    public int specialize(Character opp, int i){
+	if (i == 3) { 
+	    special3(); 
+	}
+	else {
+	    if (state != 2){ // if the opp is not paralyzed
+		if (opp.evade() == true){ // if evade successfully
+		    System.out.println("the opponent evaded your attack!");
+		}
+		else if (i == 1){
+		    special1(opp);
+		}
+		else if (i == 2){
+		    special2(opp);
+		}  
+		else if (i == 4) {
+		    if (charge == 100)
+			special4(opp); 
+		    else {
+			System.out.println("Not enough charge: you wasted an attack"); 
+		    }
+		}
+		else {
+		    System.out.println("doth gave us the wrong number. Your attack choice has been nullified"); 
+		}
 	    }
 	    else if (i == 1){
 		special1(opp);
@@ -105,38 +132,45 @@ public abstract class Character{
 	    else if (i == 2){
 		special2(opp);
 	    }
-	    else if (i == 3){
-		special3();
+	    else if (i == 4) {
+		if (charge == 100)
+		    special4(opp); 
+		else {
+		    System.out.println("Not enough charge: you wasted an attack"); 
+		}
 	    }
-	}
-	else if (i == 1){
-	    special1(opp);
-	}
-	else if (i == 2){
-	    special2(opp);
-	}
-	else if (i == 3){
-	    special3();
+	    else {
+		System.out.println("doth gave us the wrong number. Your attack choice has been nullified"); 
+	    }
 	}
     }
 
     //poison: decreasing opp's health for 3 rounds
     public void special1(Character opponent){
-	opponent.state = 1; //changes opponent's state to poison
+	opponent.state = 1;  //changes opponent's state to poison
+	System.out.println( "\n" + "enemy has been poisioned");
     }
     
     //paralysis: opp not being able to attack for 3 rounds
     public void special2(Character opponent){
 	opponent.state = 2 ; //changes opponent's state to paralyzed
+	System.out.println( "\n" + "enemy has been paralyzed");
     }
 
     //healing: increase health
     public void special3(){
 	int temp = health;
 	health = (int)(temp * 1.2);
+	System.out.println( "\n" + "Life gained"); 
     }
     
-
+    public void special4(Character opp) {
+	opp.lowerHP(190);
+	evasion = .9 * evasion; 
+	speed = .85 * speed;
+	defense = (int) (.9 * defense); 
+    }
+    
     public void defend() {
 	defense = (int) (origDefense * 1.5);
 	evasion = origEvasion + 10;

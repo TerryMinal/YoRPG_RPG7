@@ -121,10 +121,7 @@ public class YoRPG
       =============================================*/
     public boolean playTurn()
     {
-	int i = 1;
-	int j = 1;
-	int s = 1;
-	int d1, d2, j1, j2, j3, j4, nA, mnA;
+	int damage; 
 	String choice;
 	String specialChoice;
 	String specialChoice2;
@@ -153,87 +150,59 @@ public class YoRPG
 		    }
 		    System.out.print (choice);
 		    
-		    i = Integer.parseInt( in.readLine() );
+		    int i = Integer.parseInt( in.readLine() );
 		}
 		catch ( IOException e ) { }
 
 		// mage's magic is left out, instanceof is the best way to include it
-		
+		//normal attack
 		if (i == 1) {
-		    nA = pat.normalAttack (smaug);
-		    System.out.println( "\n" + pat.getName() + " dealt " + nA + "points of damage.");
+		    //attackName is an array of Strings of names of the attacks. Add to each subclass
+		    choice = "\nChoose your attack:\n" ;
+		    choice += "1:\t" + pat.attackName[0] + "\n";
+		    choice += "2:\t" + pat.attackName[1] + "\n";
+		    choice += "3:\t" + pat.attackName[2] + "\n";
+		    choice += "4:\t" + pat.attackName[3];
+		    int n = Integer.parseInt( in.readLine() ); 
+		    damage = pat.chooseAttack(smaug, n); 
+		    System.out.print ( "\n" + pat.getName() + " dealt " + damage +" points of damage.");
+	    
 		}
+		
+		//choosing special attack
 		else if (i == 2) {
 		    try {
 			specialChoice =  "\nChoose your special attack:\n" ;
-			specialChoice += "\t1: Special Attack 1\n" ;
-		        specialChoice += "\t2: Special Attack 2\n" ;
-		        specialChoice +=  "\t3: Special Attack 3\n" ;
+			specialChoice += "\t1: Poison\n" ;
+		        specialChoice += "\t2: Paralyze\n" ;
+		        specialChoice +=  "\t3: Heal thyself\n" ;
 			specialChoice +=  "Selection :" ;
 			System.out.print (specialChoice);
-			j = Integer.parseInt( in.readLine() );
+			int j = Integer.parseInt( in.readLine() );
+			pat.specialize(smaug, j); 
 		    }
-		    catch (IOException e ) { }
 
-		    if (j == 1) {
-			j1 = pat.attack1 (smaug);
-			System.out.println( "\n" + pat.getName() + " dealt " + j1 +" points of damage.");
-		    }
-		    else if (j == 2) {
-			j2 = pat.attack2 (smaug);
-			System.out.println( "\n" + pat.getName() + " dealt " + j2 +" points of damage.");
-		    }
-		    else if (j == 3) {
-			j3 = pat.attack3 (smaug);
-			System.out.println( "\n" + pat.getName() + " dealt " + j3 +" points of damage.");
-		    }
-		    else {
-			j4 = pat.normalAttack (smaug);
-			System.out.println( "\n" + pat.getName() + " dealt " + j4 +" points of damage.");
-		    }
+		    catch (IOException e ) { }
 		}
+		//defend 
 		else if (i == 3) {
 		    pat.defend();
 		    System.out.println ( pat.getName() + " gets into defensive position. His or her evasion and defense increase!" );
 		}
 		else if (i == 4) {
-		    if (pat.charge > 0) {
-			try {
-			    specialChoice = "\nChoose your special attack:" ;
-			    specialChoice +=  "\t1: Special Technique 1" ;
-			    specialChoice += "\t2: Special Technique 2" ;
-			    specialChoice += "\t3: Special Technique 3" ;
-			    System.out.print (specialChoice);
-			    s = Integer.parseInt( in.readLine() );
+		    try {
+			specialize(smaug, 4); 
 			}
 			catch (IOException e ) { }
-			// utilization of special
-			if  (s == 1) {}
-			else if (s == 2) {}
-			else if (s == 3) {}
-			else {
-			    pat.normalAttack(smaug);
-			}
-		    }
-		    else { pat.normalAttack (smaug);
-		    }
 		}
-		else {
-		    pat.normalAttack (smaug);
-		}
-		// this is used for testing; generic monster attack
-	        mnA = smaug.normalAttack (pat);
-		System.out.println( "\n" + "Ye Olde Monster smacked " + pat.getName() +
-				    " for " + mnA + " points of damage.");
 	    }
-        
-
+	       
+		// this is used for testing; generic monster attack
+	int mnA = smaug.normalAttack (pat);
+	System.out.println( "\n" + "Ye Olde Monster smacked " + pat.getName() + " for " + mnA + " points of damage.");
 	    //option 1: you & the monster perish
 	    if ( !smaug.isAlive() && !pat.isAlive() ) {
-		System.out.println( "'Twas an epic battle, to be sure... " + 
-				    "You cut ye olde monster down, but " +
-				    "with its dying breath ye olde monster. " +
-				    "laid a fatal blow upon thy skull." );
+		System.out.println( "'Twas an epic battle, to be sure... You cut ye olde monster down, but + with its dying breath ye olde monster laid a fatal blow upon thy skull." );
 		return false;
 	    }
 	    //option 2: you slay the beast
