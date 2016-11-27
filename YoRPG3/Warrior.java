@@ -1,3 +1,8 @@
+//Team RPG-7: Xin Yi Chen, Terry Guan, Alitquan Mallick
+//APCS1 pd4
+//HW35 -- Ye Olde Role Playing Game, Realized
+//2016-11-27
+
 public class Warrior extends Character {
 
     public Warrior() {
@@ -24,29 +29,32 @@ public class Warrior extends Character {
 	identity=1;
     }
 
+    //the swing of strength (137 strength, .3 speed percent)
     public int attack2 (Character opp) {
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage = (int) ((137 * attackRating) - (opp.getDefense()));
 	opp.lowerHP(damage);
 	return damage;
- }
+    }
     
+    //the swing of speed (90 strength, .7 speed percent)
     public int attack3 (Character opp) {
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage = (int) ((90 * attackRating) - (opp.getDefense()));
 	opp.lowerHP(damage);
 	return damage;
-}
-    
+    }
+
+    //muscle flexed lunge (120 strength, .5 speed percent)
     public int attack4 (Character opp) {
 	evasion = origEvasion;
 	defense = origDefense;
 	int damage = (int) ((120 * attackRating) - (opp.getDefense()));
 	opp.lowerHP(damage);
 	return damage;
-}
+    }
 
     public String about() {
 	return "A character with emphasis on power. It's brolicness takes away from it's brains and speed; Indeed this character is the embodiment of brawns over brain";    

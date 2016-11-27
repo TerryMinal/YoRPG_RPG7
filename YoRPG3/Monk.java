@@ -1,3 +1,8 @@
+//Team RPG-7: Xin Yi Chen, Terry Guan, Alitquan Mallick
+//APCS1 pd4
+//HW35 -- Ye Olde Role Playing Game, Realized
+//2016-11-27
+
 public class Monk  extends Character {
 
     public Monk () {
@@ -25,7 +30,7 @@ public class Monk  extends Character {
 	    
     }
 
-    // Bald Eagle Barrage
+    // Bald Eagle Barrage(65 strength,1 speed percent)
     public int attack2 (Character enemy) {
 	evasion = origEvasion;
 	defense = origDefense;
@@ -35,7 +40,7 @@ public class Monk  extends Character {
 	return damage;
     }
 
-    //Whale tsunami
+    //Whale tsunami(150 strength,.2 speed percent)
     public int attack3 (Character enemy) {
 	evasion = origEvasion;
 	defense = origDefense;
@@ -45,7 +50,7 @@ public class Monk  extends Character {
 	return damage;
     }
 
-    //Mudslide
+    //Mudslide(100 strength, .65 speed percent)
     public int attack4 (Character enemy) {
 	evasion = origEvasion;
 	defense = origDefense;

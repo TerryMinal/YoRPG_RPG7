@@ -1,3 +1,7 @@
+//Team RPG-7: Xin Yi Chen, Terry Guan, Alitquan Mallick
+//APCS1 pd4
+//HW35 -- Ye Olde Role Playing Game, Realized
+//2016-11-27
 
 public class Mage extends Character {
     private int MP;
@@ -23,7 +27,7 @@ public class Mage extends Character {
 	attackName[1]="Frost Strick";
 	attackName[2]="Lightning Spear";
 	attackName[3]="Jinx of Demon Fire";
-	identity=2;
+	identity=2; //mage
     }
 
     public void getMP(int num){

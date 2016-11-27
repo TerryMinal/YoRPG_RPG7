@@ -1,3 +1,8 @@
+//Team RPG-7: Xin Yi Chen, Terry Guan, Alitquan Mallick
+//APCS1 pd4
+//HW35 -- Ye Olde Role Playing Game, Realized
+//2016-11-27
+
 public class Rogue extends Character {
 
     public Rogue () {
@@ -24,6 +29,7 @@ public class Rogue extends Character {
 	identity=4;
     }
 
+    //Juu Nin Too Iro (115 strength, .9 speed percent)
     public int attack2 (Character enemy) {
 	evasion = origEvasion;
 	defense = origDefense;
@@ -32,6 +38,7 @@ public class Rogue extends Character {
 	return damage;
     } 
 
+    //Go To Ra Shuriken (105 strength, 1 speed percent)
     public int attack3 (Character enemy) {
 	evasion = origEvasion;
 	defense = origDefense;
@@ -39,7 +46,8 @@ public class Rogue extends Character {
 	enemy.lowerHP(damage);
 	return damage;
     }
-	
+
+    //Kami No Ninjato (128 strength, .86 speed percent)
     public int attack4 (Character enemy) {
 	evasion = origEvasion;
 	defense = origDefense;

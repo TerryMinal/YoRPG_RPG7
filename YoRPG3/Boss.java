@@ -1,3 +1,8 @@
+//Team RPG-7: Xin Yi Chen, Terry Guan, Alitquan Mallick
+//APCS1 pd4
+//HW35 -- Ye Olde Role Playing Game, Realized
+//2016-11-27
+
 public class Boss extends Monster {
 
     public Boss() {
