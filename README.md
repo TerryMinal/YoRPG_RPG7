@@ -2,9 +2,9 @@
 YoRPG7, a terminal rpg game, created by Xin Yi, Terry, and Alitquan
 
 a)**Additional Features:**
-  Determine who goes first by speed percent of the attack methods, and the speed of the character
-  Character can choose to attack or defend
-  Added evasion attribute
+  1.Determine who goes first by speed percent of the attack methods, and the speed of the character
+  2.Character can choose to attack or defend
+  3.Added evasion attribute
   4.More attack methods 
       a.Different attack methods for different subclasses
       b.Special attacks (poison,paralysis,and healing)
@@ -12,7 +12,8 @@ a)**Additional Features:**
   6.Added a Boss class
   7.Monsters and Boss have its own methods
   8.After each battle, the character's attributes will reset
-  
+  + um
+  + um
   
   
 b)**Instruction to play: **
