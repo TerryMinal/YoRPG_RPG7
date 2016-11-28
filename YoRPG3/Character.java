@@ -67,7 +67,7 @@ public abstract class Character{
     public int chooseAttack(Character opp, int i){
 	if (this.state != 2){//if character is not paralyzed
 	    if (opp.evade()  == true){ //if opponent's  evade successfully
-		if (opp.state == 5) {
+		if (opp.identity != 5 && opp.identity != 6) {
 		    System.out.println(" Your opponent evaded your attack! ");
 		    return 0;
 		}
