@@ -5,14 +5,13 @@ a)**Additional Features:**
   - Determine who goes first by speed percent of the attack methods, and the speed of the character
   - Character can choose to attack or defend
   - Added evasion attribute
-  - More attack methods 
-  ⋅⋅* Unordered sub-list. 
-  ⋅⋅* Different attack methods for different subclasses
-  ⋅⋅* Special attacks (poison,paralysis,and healing)
+  - Different attack methods for different subclasses
+  - Special attacks (poison,paralysis,and healing)
   - Mage uses Magic Points for its attacks
   - Added a Boss class
   - Monsters and Boss have its own methods
   - After each battle, the character's attributes will reset
+  - Storyline
  
   
   
