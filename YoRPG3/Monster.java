@@ -12,6 +12,7 @@ public class Monster extends Character {
 	defense = origDefense = 55;
 	speed = origSpeed = 80;
 	state = 0;
+	charge = 0;
 	attackRating = origAttack = 1;
 	evasion = origEvasion = .38; 
 	speedPercent[0] = .46; 
@@ -55,11 +56,12 @@ public class Monster extends Character {
 
     public void determineAttack(Character opp) {
 	if (Math.random() >= .7) {
-	    chooseAttack(opp, chosenAttack); 
+	    int damage = chooseAttack(opp, chosenAttack);
+	    System.out.println ("Monster has dealt " + damage + " damage to " +  opp.getName());
 	}
 	else {
 	    if (chosenAttack == 4) {
-		if (charge == 100)
+		if (this.charge == 100)
 		    specialize(opp, chosenAttack);
 		else {
 		    //shuffles chosenAttack until its not a special super attack

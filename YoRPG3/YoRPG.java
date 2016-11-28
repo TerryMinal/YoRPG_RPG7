@@ -264,7 +264,7 @@ public class YoRPG
 
     private void displayStats() {
 	String stats;
-	stats = "\n" + pat.getName() +"'s stats:\n";
+	stats = "\n" + pat.getName() +"'s stats:";
 	stats += "\nhealth: " + pat.health + "\n";
 	stats += "charge: " + pat.charge;
 	if (pat.identity == 2){
