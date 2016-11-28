@@ -30,10 +30,7 @@ public class YoRPG
     
     private InputStreamReader isr;
     private BufferedReader in;
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-    // ~~~~~~~~~~ DEFAULT CONSTRUCTOR ~~~~~~~~~~~
     public YoRPG()
     {
 	moveCount = 0;
@@ -42,8 +39,6 @@ public class YoRPG
 	in = new BufferedReader( isr );
 	newGame();
     }
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 
     // ~~~~~~~~~~~~~~ METHODS ~~~~~~~~~~~~~~~~~~~
 
@@ -133,7 +128,7 @@ public class YoRPG
 	    smaug = new Boss(); 
 	else
 	    smaug = new Monster(); 
-
+	
 	if ( Math.random() >= ( difficulty / 3.0 ) )
 	    System.out.println( "\nNothing to see here. Move along!" );
 	else {	
@@ -288,17 +283,18 @@ public class YoRPG
 	System.out.println("onward we march!"); 
     }
 
-    private boolean winLose(boolean bossOrNot) {
-	System.out.println("Time to do battle!"); 
-	boolean cont = playTurn(bossOrNot); 
-	if (!cont) {
-	    System.out.println("Doth game is over...");
-	    return false; 	       
+    private boolean winLose(boolean bossOrNot, int numEnemies) {
+	boolean cont; 
+	for (int i  = 0; i < numEnemies; i++) {
+	    System.out.println("Time to do battle!"); 
+	    cont = playTurn(bossOrNot); 
+	    if (!cont) {
+		System.out.println("Doth game is over...");
+		return false; 	       
+	    } 
 	}
-	else {
-	    march(); 
-	    return true;  
-	}
+	march(); 
+	return true;
     }
 
     //true: player is still playing the game. False: palyer died or story has ended
@@ -347,14 +343,14 @@ public class YoRPG
 		int n = Integer.parseInt( in.readLine() ); 
 		if (n == 1) {
 		    System.out.println("As you were hiding a wondering ghost saw you and attempted to take over your body. You began to do battle with this ghost"); 
-		    cont = winLose(false);
+		    cont = winLose(false, 3);
 		    if (!cont) 
 			return cont; 
 		    else
 			finish = true; 
 		}
 		else if (n == 2) {
-		    cont = winLose(false); 
+		    cont = winLose(false, 3); 
 		    if (!cont) 
 			return cont; 
 		    else
@@ -376,7 +372,7 @@ public class YoRPG
 		 //left course
 		 if (n == 1) {
 		     System.out.println("enemies have trapped you in a hole. You must defeat them to climb up!");
-		     cont = winLose(false); 
+		     cont = winLose(false, 4); 
 		     if (!cont)
 			 return cont;
 		     else
@@ -385,7 +381,7 @@ public class YoRPG
 		 
 		 else if (n == 2) {
 		     System.out.println("Pirates have surrounded you to steal your loot. Defend yourself"); 
-		     cont = winLose(false); 
+		     cont = winLose(false, 5); 
 		     if (!cont)
 			 return cont; 
 		     else
@@ -402,7 +398,7 @@ public class YoRPG
 	if (finish) {
 	    System.out.println("You have reached the Land of the Holy Grail. Lava surrounds this place. It is even said that a Skywalker once laid in this ocean of lava"); 
 	    System.out.println("A boss has appeared before you! Fight to retrieve the Holy Grail!"); 
-	    cont = winLose(true);
+	    cont = winLose(true, 1);
 	    if (!cont) 
 		return cont; 
 	    else {
