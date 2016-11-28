@@ -15,7 +15,7 @@ a)**Additional Features:**
  
   
   
-b)**Instruction to play: **
+b)**Instruction to play:**
   - Choose a character (Warrior, Mage, Rogue, or Monk)
   - Wait till you encounter a monster
   - Choose to attack or defend
