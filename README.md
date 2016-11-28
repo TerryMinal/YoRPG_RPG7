@@ -17,11 +17,12 @@ a)**Additional Features:**
   
 b)**Instruction to play:**
   - Choose a character (Warrior, Mage, Rogue, or Monk)
+  - Follow the storyline
   - Wait till you encounter a monster
   - Choose to attack or defend
   - If attack: choose normal attack or special attack
   - If normal attack: choose one of the four normal attacks
   - If special attack: choose one of the three special attacks
   - Aware of your opponent and your stats (health,MP,and charge)
-  - Plan, and defeat your enemy!
+  - Plan, choose your destiny, and defeat your enemy!
 
