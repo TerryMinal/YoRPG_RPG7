@@ -72,7 +72,7 @@ public abstract class Character{
 		    return 0;
 		}
 		else {
-		    System.out.println( opp.getName () + "dodges the monster's attack by a hair's breadth !");
+		    System.out.println("\n" +  opp.getName () + " dodges the monster's attack by a hair's breadth !");
 		    return 0;
 		}
 	    }
@@ -95,7 +95,10 @@ public abstract class Character{
 	    }
 	}
 	else {
-	    System.out.println("doth been paralyzed. Doth muscles need reworking"); 
+	    if (this.identity != 5) {
+		System.out.println("doth been paralyzed. Doth muscles need reworking"); 
+		return 0;
+	    }
 	    return 0;
 	}
     }
@@ -142,7 +145,12 @@ public abstract class Character{
 	    }
 	}
 	else {
-	    System.out.println("doth been paralyzed. Doth muscles need reworking"); 
+	    if (opp.identity == 5) {
+		System.out.println ("The monster's paralysis prevents it from attacking! ");
+	    }
+	    else {
+		System.out.println("doth been paralyzed. Doth muscles need reworking!!!");
+	    }
 	}	
     }
 
@@ -150,11 +158,11 @@ public abstract class Character{
     public void special1(Character opponent){
 	opponent.state = 1;  //changes opponent's state to poison
 	opponent.numTurns = 3;
-        if (opponent.state == 5) {
+        if (opponent.state != 5) {
 	    System.out.println( "\n" + "Enemy has been poisoned! ");
 	}
 	else {
-	    System.out.println (this.getName() + " has been poisoned! ");
+	    System.out.println ("\n" + this.getName() + " has been poisoned! ");
 	}
     }
     
@@ -162,7 +170,7 @@ public abstract class Character{
     public void special2(Character opponent){
 	opponent.state = 2 ; //changes opponent's state to paralyzed
 	opponent.numTurns = 3;
-	if (opponent.state == 5) {
+	if (opponent.state != 5) {
 	    System.out.println( "\n" + "Enemy has been paralyzed! ");
 	}
 	else {
@@ -219,14 +227,20 @@ public abstract class Character{
 	    health -= 10;
 	    numTurns -= 1;
 	    if (this.identity == 5) {
-		System.out.println (" Monster loses 10 points due to poison! ");
+		System.out.println ("Monster loses 10 points due to poison! ");
 	    }
 	    else {
 		System.out.println (this.getName() + " loses 10 health points due to poison! ");
 	    }
 	} 
 	if (state == 2) {
-	    numTurns -= 1; 
+	    numTurns -= 1;
+	    if (this.identity == 5) {
+		System.out.println ("Monster is paralyzed and cannot move!! ");
+	    }
+	    else {
+		System.out.println (this.getName() + " is paralyzed! ");
+	    }
 	    //paralysis is provided in chooseAttack and specialize
 	}
     }
