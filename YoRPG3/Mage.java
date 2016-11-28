@@ -4,7 +4,7 @@
 //2016-11-27
 
 public class Mage extends Character {
-    protected int MP;
+    public int MP;
     public Mage() {
 	this("noName"); 
     }
@@ -29,7 +29,7 @@ public class Mage extends Character {
 	attackName[3]="Jinx of Demon Fire";
 	identity=2; //mage
     }
-
+    
     public void getMP(int num){
 	int tempMP = MP;
 	MP = tempMP + num;

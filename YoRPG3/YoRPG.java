@@ -108,8 +108,7 @@ public class YoRPG
 	    System.out.println ("Your classeth hath been set to Warrior by defaulteth");
 	    pat = new Warrior (name);
 	}
-        smaug = new Monster(); 
-
+       
     }//end newGame()
 
 
@@ -119,22 +118,26 @@ public class YoRPG
       post: Returns true if player wins (monster dies).
       Returns false if monster wins (player dies).
       =============================================*/
-    public boolean playTurn()
+    public boolean playTurn(boolean bossOrNot)
     {
 	int damage; 
 	String choice;
 	String specialChoice;
 	String specialChoice2;
-
+	if (bossOrNot) {
+	    Boss smaug = new Boss(); 
+	}
+	else {
+	    Monster smaug = new Monster(); 
+	}
 	if ( Math.random() >= ( difficulty / 3.0 ) )
 	    System.out.println( "\nNothing to see here. Move along!" );
 	else {
-	    System.out.println( "\nLo, yonder monster approacheth!" );
-	    
+	    System.out.println( "\nLo, yonder monster approacheth!" ); 
 	    while( smaug.isAlive() && pat.isAlive() ) {
 		displayStats(); 
 		// Give user the option of using a special attack:
-		try {
+		 	try {
 		    choice = "Choose your attack:\n" ;
 		    choice += "\t1: Attack\n" ;
 		    choice += "\t2: Special Attack\n" ;
@@ -229,8 +232,7 @@ public class YoRPG
 		return false;
 	    }
 	}//end else
-
-	return true;
+	return true; 
     }//end playTurn()
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -271,7 +273,116 @@ public class YoRPG
 	}
 	System.out.println(stats); 
     }
-    
+
+    private void march() {
+	System.out.println("onward we march!"); 
+    }
+
+    private boolean winLose(boolean bossOrNot) {
+	System.out.println("Time to do battle!"); 
+	boolean cont = playTurn(bossOrNot); 
+	if (cont) {
+	    System.out.println("Doth game is over...");
+	    return false; 	       
+	}
+	else {
+	    march(); 
+	    return true; 
+	}
+    }
+
+    //true: player is still playing the game. False: palyer died or story has ended
+    private boolean story () {
+	boolean cont = true; 
+	int i;
+	String choices; 
+	System.out.println("The Holy Grail t'was discovered days ago the King says. Adventure to retrieve it he plans to send you on. Doth up for it?");
+	try {
+	    //beginning of the story
+	    choices = "1: The Holy Grail? It would be an honor to serve the King on this quest!\n" ; 
+	    choices += "2: Sorry but I am quite busy at the moment. Been pondering on what to get for Xmas.\n";  
+	    choices += "Selection: "; 
+	    System.out.println(choices); 
+	    i = Integer.parseInt( in.readLine() ); 
+	    if (i == 1) {
+		System.out.print("Glad to have you lad! The journey begins at dawn"); 
+	    }
+	    if (i == 2) {
+		System.out.println("The King was unable to find the Holy Grail because of you. You're head had been removed from thy body and display on top a cup");
+		return false; 
+	    }
+	    
+	}
+	catch (IOException e) {}
+	//hill and desert
+	try {
+	    System.out.println("You have come across a crossway between a hill and a desert. Which one does thou choose?"); 
+	    choices = "1: I venture up heights. I choose the hill\n" ; 
+	    choices += "2: I dislike both but if I must I will choose the desert\n";  
+	    choices += "Selection: "; 
+	    System.out.print(choices); 
+	    i = Integer.parseInt( in.readLine() ); 
+	    //hill route
+	    if (i == 1) { 
+		march();
+		System.out.println("Enemies are approaching! Hide or fight like a man!?"); 
+		choices = "1: Hide!\n" ; 
+		choices += "2: Fight!\n";  
+		choices += "Selection: "; 
+		System.out.print(choices); 
+		int n = Integer.parseInt( in.readLine() ); 
+		if (n == 1) {
+		    System.out.println("As you were hiding a wondering ghost saw you and attempted to take over your body. You began to do battle with this ghost"); 
+		    cont = winLose(false);
+		    if (!cont) 
+			return cont; 
+		}
+		if (n == 2) {
+		    cont = winLose(false); 
+		    if (!cont) 
+			return cont; 
+		}
+	    }
+	    //desert route
+	    if (i == 2) {
+		 System.out.println("You have come across two passageways. Which one do you chose, the left or right?"); 
+		 choices = "1: left of course\n";
+		 choices += "2: right my dear\n";  
+		 choices += "Selection: "; 
+		 System.out.print(choices); 
+		 int n = Integer.parseInt( in.readLine() ); 
+		 //left course
+		 if (n == 1) {
+		     System.out.println("enemies have trapped you in a hole. You must defeat them to climb up!");
+		     cont = winLose(false); 
+		     if (!cont)
+			 return cont; 
+		 }
+		 
+		 if (n == 2) {
+		     System.out.println("Pirates have surrounded you to steal your loot. Defend yourself"); 
+		     cont = winLose(false); 
+		     if (!cont)
+			 return cont; 
+		 }
+	    }//desert route
+	}//try
+	    catch (IOException e) {}
+	
+	if (cont) {
+	    System.out.println("You have reached the Land of the Holy Grail. Lava surrounds this place. It is even said that a Skywalker once laid in this ocean of lava"); 
+	    System.out.println("A boss has appeared before you! Fight to retrieve the Holy Grail!"); 
+	    cont = winLose(true);
+	    if (!cont) 
+		return cont; 
+	    else {
+		System.out.println("Congratulation! You have earned the King's respect and obtained the Holy Grail! Sadly the King had to murder you to keep the Grail for himself"); 
+		return true; 
+	    }
+	}
+	return false;
+    }//end of story
+
     public static void main( String[] args )
     {
 	//As usual, move the begin-comment bar down as you progressively 
@@ -281,16 +392,6 @@ public class YoRPG
 	//loading...
 	YoRPG game = new YoRPG();
 
-	int encounters = 0;
-
-	while( encounters < MAX_ENCOUNTERS ) {
-	    if ( !game.playTurn() )
-		break;
-	    encounters++;
-	    System.out.println();
-	}
-
-	System.out.println( "Thy game doth be over." );
 	//	  ================================================*/
     }//end main
 
