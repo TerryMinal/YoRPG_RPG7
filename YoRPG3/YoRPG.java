@@ -215,7 +215,7 @@ public class YoRPG
 	    //case analysis of battling
 	    //option 1: you & the monster perish
 	    if ( !smaug.isAlive() && !pat.isAlive() ) {
-		System.out.println( "'Twas an epic battle, to be sure... You cut ye olde monster down, but + with its dying breath ye olde monster laid a fatal blow upon thy skull." );
+		System.out.println( "'Twas an epic battle, to be sure... You cut ye olde monster down, but  with its dying breath ye olde monster laid a fatal blow upon thy skull." );
 		return false;
 	    }
 	    //option 2: you slay the beast
@@ -238,7 +238,8 @@ public class YoRPG
     private int doBattle(int i) {
 	int damage; 
 	double playerSpeed  = pat.speed * pat.speedPercent[i-1]; //speed percent array goes from 0 to 3
-	double monsterSpeed = smaug.speed * smaug.speedPercent[smaug.chosenAttack]; 
+	double monsterSpeed = smaug.speed * smaug.speedPercent[smaug.chosenAttack];
+	smaug.randomizeAttack();
 	if (playerSpeed > monsterSpeed) {
 	    damage = pat.chooseAttack(smaug, i); 
 	    smaug.determineAttack(pat); 
@@ -263,7 +264,7 @@ public class YoRPG
 
     private void displayStats() {
 	String stats;
-	stats = pat.getName() +"'s stats:\n";
+	stats = "\n" + pat.getName() +"'s stats:\n";
 	stats += "\nhealth: " + pat.health + "\n";
 	stats += "charge: " + pat.charge;
 	if (pat.identity == 2){
@@ -302,17 +303,17 @@ public class YoRPG
 	    choices = "1: The Holy Grail? It would be an honor to serve the King on this quest!\n" ; 
 	    choices += "2: Sorry but I am quite busy at the moment. Been pondering on what to get for Xmas.\n";  
 	    choices += "Selection: "; 
-	    System.out.println(choices); 
+	    System.out.print(choices); 
 	    i = Integer.parseInt( in.readLine() ); 
 	    if (i == 1) {
-		System.out.print("Glad to have you lad! The journey begins at dawn"); 
+		System.out.print("Glad to have you lad! The journey begins at dawn. "); 
 	    }
 	    else if (i == 2) {
-		System.out.println("The King was unable to find the Holy Grail because of you. You're head had been removed from thy body and display on top a cup");
+		System.out.println("The King was unable to find the Holy Grail because of you. You4 head hath been removed from thy body and displayed on top a cup");
 		return false; 
 	    }
 	    else {
-		System.out.println("wrong choice");
+		System.out.println("Wrong choice");
 		return false; 
 	    }
 	}
@@ -320,8 +321,8 @@ public class YoRPG
 	//hill and desert
 	try {
 	    System.out.println("You have come across a crossway between a hill and a desert. Which one does thou choose?"); 
-	    choices = "1: I venture up heights. I choose the hill\n" ; 
-	    choices += "2: I dislike both but if I must I will choose the desert\n";  
+	    choices = "1: I wish to venture up the  heights. I choose the hill.\n" ; 
+	    choices += "2: I dislike both but if I must I will choose the desert.\n";  
 	    choices += "Selection: "; 
 	    System.out.print(choices); 
 	    i = Integer.parseInt( in.readLine() ); 
