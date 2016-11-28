@@ -195,8 +195,7 @@ public abstract class Character{
     //healing: increase health
     public void special3(){
 	if (charge < 30){
-	    System.out.println("Normal Attack! Oops... it seems like you don't have enough charges!");
-	    attack1(opponent);
+	    System.out.println("Oops... it seems like you don't have enough charges! You have just wasted your attack!");
 	}
 	else{
 	    int temp = health;
