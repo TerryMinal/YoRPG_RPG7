@@ -12,6 +12,9 @@ a)Additional Features:
   6.Added a Boss class
   7.Monsters and Boss have its own methods
   8.After each battle, the character's attributes will reset
+  
+  
+  
 b)Instruction to play: 
   1.Choose a character (Warrior, Mage, Rogue, or Monk)
   2.Wait till you encounter a monster
