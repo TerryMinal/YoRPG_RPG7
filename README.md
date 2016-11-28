@@ -6,8 +6,8 @@ a)**Additional Features:**
   - Character can choose to attack or defend
   - Added evasion attribute
   - More attack methods 
-      ..* Different attack methods for different subclasses
-      ..* Special attacks (poison,paralysis,and healing)
+  ⋅⋅* Different attack methods for different subclasses
+  ⋅⋅* Special attacks (poison,paralysis,and healing)
   - Mage uses Magic Points for its attacks
   - Added a Boss class
   - Monsters and Boss have its own methods
