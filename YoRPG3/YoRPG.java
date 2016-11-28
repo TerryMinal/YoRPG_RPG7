@@ -281,7 +281,7 @@ public class YoRPG
     private boolean winLose(boolean bossOrNot) {
 	System.out.println("Time to do battle!"); 
 	boolean cont = playTurn(bossOrNot); 
-	if (cont) {
+	if (!cont) {
 	    System.out.println("Doth game is over...");
 	    return false; 	       
 	}
