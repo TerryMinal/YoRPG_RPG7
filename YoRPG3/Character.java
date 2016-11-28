@@ -71,11 +71,11 @@ public abstract class Character{
 	if (this.state != 2){//if character is not paralyzed
 	    if (opp.evade()  == true){ //if opponent's  evade successfully
 		if (opp.identity != 5 && opp.identity != 6) {
-		    System.out.println(" Your opponent evaded your attack! ");
+		    System.out.println("\n" +  opp.getName () + " dodges the monster's attack by a hair's breadth !");
 		    return 0;
 		}
 		else {
-		    System.out.println("\n" +  opp.getName () + " dodges the monster's attack by a hair's breadth !");
+		    System.out.println(" Your opponent evaded your attack! ");
 		    return 0;
 		}
 	    }
@@ -201,23 +201,22 @@ public abstract class Character{
 	    System.out.println("Oops... it seems like you don't have enough charges! You have just wasted your attack!");
 	}
 	else{
-	    int temp = health;
-	    health = (int)(temp * 1.2);
-	    System.out.println( "\n" + "Health  gained");
+	    health += (int) origHealth * 0.5;
+	    System.out.println( "\n" + this.getName()+ " uses regeneration powers! " + this.getName() + "gains health! ");
 	    charge(-30);
 	}
     }
     
     public void special4(Character opp) {
-	opp.lowerHP(190);
+	opp.lowerHP(150);
 	evasion = .9 * evasion; 
 	speed = .85 * speed;
 	defense = (int) (.9 * defense); 
     }
     
     public void defend() {
-	defense = (int) (origDefense * 1.5);
-	evasion = origEvasion + 10;
+	defense = (int) (origDefense * 1.25);
+	evasion = origEvasion + 5;
 	charge (20);
 	if (charge > 100) {
 	    charge = 100;

@@ -194,11 +194,15 @@ public class YoRPG
 		    }
 		    //defend 
 		    else if (i == 3) {
-			pat.defend();
+		        pat.defend();
+			smaug.randomizeAttack();
+			smaug.determineAttack(pat);
 			System.out.println ( "\n" + pat.getName() + " gets into defensive position. His or her evasion and defense increase!" );
 		    }
 		    else if (i == 4) {
-			    pat.specialize(smaug, 4); 
+			    pat.specialize(smaug, 4);
+			    System.out.println ( "\n" + pat.getName() + " uses a special technique taught by an ancient monk");
+			    System.out.println ( pat.getName() + " deals 150 damage! ");
 		    }
 		    else {
 			pat.attack1 (smaug);
@@ -241,20 +245,21 @@ public class YoRPG
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     private int doBattle(int i) {
-	int damage; 
+	int damage;
 	double playerSpeed  = pat.speed * pat.speedPercent[i-1]; //speed percent array goes from 0 to 3
 	double monsterSpeed = smaug.speed * smaug.speedPercent[smaug.chosenAttack];
 	smaug.randomizeAttack();
 	if (playerSpeed > monsterSpeed) {
 	    damage = pat.chooseAttack(smaug, i); 
 	    smaug.determineAttack(pat); 
-	} 
+	}
 	else {
 	    smaug.determineAttack(pat); 
 	    damage = pat.chooseAttack(smaug, i); 
 	}
 	return damage;
     }
+	
     
     private void specializeBattle(int i) {
 	if (pat.speed > smaug.speed) { 

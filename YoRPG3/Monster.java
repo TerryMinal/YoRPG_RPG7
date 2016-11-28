@@ -54,30 +54,13 @@ public class Monster extends Character {
 	chosenAttack = (int) (Math.random() * 3 + 1); 
     }
 
-    public void determineAttack(Character opp) {
+    public int determineAttack(Character opp) {
 	//if (Math.random() >= .7) {
-	    int damage = chooseAttack(opp, chosenAttack);
-	    System.out.println ("\n" + "Monster has dealt " + damage + " damage to " +  opp.getName());
-	}
-    // error here, needs to be redone
-	/*
-	else {
-	    if (chosenAttack == 4) {
-		if (this.charge == 100)
-		    specialize(opp, chosenAttack);
-		else {
-		    //shuffles chosenAttack until its not a special super attack
-		    while(chosenAttack == 4) {
-			randomizeAttack();
-		    }
-		}
-	    }
-	    else {
-		specialize(opp, chosenAttack); 
-	    }
-	}
-	}
-	*/
+	int damage = chooseAttack(opp, chosenAttack);
+	System.out.println ("\n" + "Monster has dealt " + damage + " damage to " +  opp.getName());
+	return damage;
+    }
+   
     
 
     public String about() {
