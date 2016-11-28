@@ -111,7 +111,6 @@ public class YoRPG
        
     }//end newGame()
 
-
     /*=============================================
       boolean playTurn -- simulates a round of combat
       pre:  Character pat has been initialized
@@ -124,15 +123,15 @@ public class YoRPG
 	String choice;
 	String specialChoice;
 	String specialChoice2;
-	if (bossOrNot) {
-	    Boss smaug = new Boss(); 
-	}
-	else {
-	    Monster smaug = new Monster(); 
-	}
+	
+	if (bossOrNot)
+	    smaug = new Boss(); 
+	else
+	    smaug = new Monster(); 
+
 	if ( Math.random() >= ( difficulty / 3.0 ) )
 	    System.out.println( "\nNothing to see here. Move along!" );
-	else {
+	else {	
 	    System.out.println( "\nLo, yonder monster approacheth!" ); 
 	    while( smaug.isAlive() && pat.isAlive() ) {
 		displayStats(); 
@@ -287,13 +286,14 @@ public class YoRPG
 	}
 	else {
 	    march(); 
-	    return true; 
+	    return true;  
 	}
     }
 
     //true: player is still playing the game. False: palyer died or story has ended
     private boolean story () {
-	boolean cont = true; 
+	boolean cont = true;
+	boolean finish = false; 
 	int i;
 	String choices; 
 	System.out.println("The Holy Grail t'was discovered days ago the King says. Adventure to retrieve it he plans to send you on. Doth up for it?");
@@ -307,11 +307,14 @@ public class YoRPG
 	    if (i == 1) {
 		System.out.print("Glad to have you lad! The journey begins at dawn"); 
 	    }
-	    if (i == 2) {
+	    else if (i == 2) {
 		System.out.println("The King was unable to find the Holy Grail because of you. You're head had been removed from thy body and display on top a cup");
 		return false; 
 	    }
-	    
+	    else {
+		System.out.println("wrong choice");
+		return false; 
+	    }
 	}
 	catch (IOException e) {}
 	//hill and desert
@@ -336,15 +339,23 @@ public class YoRPG
 		    cont = winLose(false);
 		    if (!cont) 
 			return cont; 
+		    else
+			finish = true; 
 		}
-		if (n == 2) {
+		else if (n == 2) {
 		    cont = winLose(false); 
 		    if (!cont) 
 			return cont; 
+		    else
+			finish = true; 
 		}
-	    }
+		else {
+		    System.out.println("wrong choice"); 
+		    return false; 
+		}
+	    }//end of hill
 	    //desert route
-	    if (i == 2) {
+	    else if (i == 2) {
 		 System.out.println("You have come across two passageways. Which one do you chose, the left or right?"); 
 		 choices = "1: left of course\n";
 		 choices += "2: right my dear\n";  
@@ -356,20 +367,28 @@ public class YoRPG
 		     System.out.println("enemies have trapped you in a hole. You must defeat them to climb up!");
 		     cont = winLose(false); 
 		     if (!cont)
-			 return cont; 
+			 return cont;
+		     else
+			 finish = true; 
 		 }
 		 
-		 if (n == 2) {
+		 else if (n == 2) {
 		     System.out.println("Pirates have surrounded you to steal your loot. Defend yourself"); 
 		     cont = winLose(false); 
 		     if (!cont)
 			 return cont; 
+		     else
+			 finish = true; 
 		 }
+		 else {
+		     System.out.println("wrong choice"); 
+		     return false; 
+		 } 
 	    }//desert route
 	}//try
 	    catch (IOException e) {}
 	
-	if (cont) {
+	if (finish) {
 	    System.out.println("You have reached the Land of the Holy Grail. Lava surrounds this place. It is even said that a Skywalker once laid in this ocean of lava"); 
 	    System.out.println("A boss has appeared before you! Fight to retrieve the Holy Grail!"); 
 	    cont = winLose(true);
@@ -385,14 +404,11 @@ public class YoRPG
 
     public static void main( String[] args )
     {
-	//As usual, move the begin-comment bar down as you progressively 
-	//test each new bit of functionality...
-	// ================================================*/
         
 	//loading...
 	YoRPG game = new YoRPG();
-
-	//	  ================================================*/
+	
+	game.story(); 
     }//end main
 
 }//end class YoRPG
