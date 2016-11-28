@@ -95,7 +95,7 @@ public abstract class Character{
 	    }
 	}
 	else {
-	    if (this.identity != 5) {
+	    if (this.identity != 5 && this.identity != 6) {
 		System.out.println("doth been paralyzed. Doth muscles need reworking"); 
 		return 0;
 	    }
@@ -145,8 +145,8 @@ public abstract class Character{
 	    }
 	}
 	else {
-	    if (opp.identity == 5) {
-		System.out.println ("The monster's paralysis prevents it from attacking! ");
+	    if (opp.identity == 5 || opp.identity == 6) {
+		System.out.println ("The opponent's paralysis prevents it from attacking! ");
 	    }
 	    else {
 		System.out.println("doth been paralyzed. Doth muscles need reworking!!!");
@@ -156,33 +156,54 @@ public abstract class Character{
 
     //poison: decreasing opp's health for 3 rounds
     public void special1(Character opponent){
-	opponent.state = 1;  //changes opponent's state to poison
-	opponent.numTurns = 3;
-        if (opponent.state != 5) {
-	    System.out.println( "\n" + "Enemy has been poisoned! ");
+	if (charge < 30){
+	    System.out.println("Normal Attack! Oops... it seems like you don't have enough charges!");
+	    attack1(opponent);
 	}
-	else {
-	    System.out.println ("\n" + this.getName() + " has been poisoned! ");
+	else{
+	    opponent.state = 1;  //changes opponent's state to poison
+	    opponent.numTurns = 3;
+	    if (opponent.identity == 5 || opponent.identity == 6) {
+		System.out.println( "\n" + "Enemy has been poisoned! ");
+	    }
+	    else {
+		System.out.println ("\n" + this.getName() + " has been poisoned! ");
+	    }
+	    charge(-30);
 	}
     }
     
     //paralysis: opp not being able to attack for 3 rounds
     public void special2(Character opponent){
-	opponent.state = 2 ; //changes opponent's state to paralyzed
-	opponent.numTurns = 3;
-	if (opponent.state != 5) {
-	    System.out.println( "\n" + "Enemy has been paralyzed! ");
+	if (charge < 40){
+	    System.out.println("Normal Attack! Oops... it seems like you don't have enough charges!");
+	    attack1(opponent);
 	}
-	else {
-	    System.out.println (this.getName() + " has been paralyzed! ");
+	else{
+	    opponent.state = 2 ; //changes opponent's state to paralyzed
+	    opponent.numTurns = 3;
+	    if (opponent.identity == 5 || opponent.identity == 6) {
+		System.out.println( "\n" + "Enemy has been paralyzed! ");
+	    }
+	    else {
+		System.out.println (this.getName() + " has been paralyzed! ");
+	    }
+	    charge(-40);
 	}
     }
 
     //healing: increase health
     public void special3(){
-	int temp = health;
-	health = (int)(temp * 1.2);
-	System.out.println( "\n" + "Health  gained"); 
+	if (charge < 30){
+	    System.out.println("Normal Attack! Oops... it seems like you don't have enough charges!");
+	    attack1(opponent);
+	}
+	else{
+	    int temp = health;
+	    health = (int)(temp * 1.2);
+	    System.out.println( "\n" + "Health  gained");
+	    charge(-30);
+	}
     }
     
     public void special4(Character opp) {
