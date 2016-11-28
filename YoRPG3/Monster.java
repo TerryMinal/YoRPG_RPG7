@@ -55,10 +55,12 @@ public class Monster extends Character {
     }
 
     public void determineAttack(Character opp) {
-	if (Math.random() >= .7) {
+	//if (Math.random() >= .7) {
 	    int damage = chooseAttack(opp, chosenAttack);
-	    System.out.println ("Monster has dealt " + damage + " damage to " +  opp.getName());
+	    System.out.println ("\n" + "Monster has dealt " + damage + " damage to " +  opp.getName());
 	}
+    // error here, needs to be redone
+	/*
 	else {
 	    if (chosenAttack == 4) {
 		if (this.charge == 100)
@@ -74,7 +76,9 @@ public class Monster extends Character {
 		specialize(opp, chosenAttack); 
 	    }
 	}
-    }
+	}
+	*/
+    
 
     public String about() {
 	return "I'm a monster. I was designed by game developers to be slain for points."; 

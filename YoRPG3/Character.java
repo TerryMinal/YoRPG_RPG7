@@ -144,14 +144,24 @@ public abstract class Character{
     public void special1(Character opponent){
 	opponent.state = 1;  //changes opponent's state to poison
 	opponent.numTurns = 3;
-	System.out.println( "\n" + "enemy has been poisioned");
+        if (opponent.state == 5) {
+	    System.out.println( "\n" + "Enemy has been poisoned! ");
+	}
+	else {
+	    System.out.println (this.getName() + " has been poisoned! ");
+	}
     }
     
     //paralysis: opp not being able to attack for 3 rounds
     public void special2(Character opponent){
 	opponent.state = 2 ; //changes opponent's state to paralyzed
 	opponent.numTurns = 3;
-	System.out.println( "\n" + "enemy has been paralyzed");
+	if (opponent.state == 5) {
+	    System.out.println( "\n" + "Enemy has been paralyzed! ");
+	}
+	else {
+	    System.out.println (this.getName() + " has been paralyzed! ");
+	}
     }
 
     //healing: increase health
@@ -201,7 +211,13 @@ public abstract class Character{
 	}
 	if (state == 1) {
 	    health -= 10;
-	    numTurns -= 1; 
+	    numTurns -= 1;
+	    if (this.identity == 5) {
+		System.out.println (" Monster loses 10 points due to poison! ");
+	    }
+	    else {
+		System.out.println (this.getName() + " loses 10 health points due to poison! ");
+	    }
 	} 
 	if (state == 2) {
 	    numTurns -= 1; 

@@ -165,7 +165,7 @@ public class YoRPG
 			
 			    int n = Integer.parseInt( in.readLine() );			
 			    damage = doBattle(n);  
-			    System.out.print ( "\n" + pat.getName() + " dealt " + damage +" points of damage.");
+			    System.out.print ( "\n" + pat.getName() + " dealt " + damage +" points of damage." + "\n");
 			}
 			catch (IOException e) {}
 	    
@@ -190,7 +190,7 @@ public class YoRPG
 		    //defend 
 		    else if (i == 3) {
 			pat.defend();
-			System.out.println ( pat.getName() + " gets into defensive position. His or her evasion and defense increase!" );
+			System.out.println ( "\n" + pat.getName() + " gets into defensive position. His or her evasion and defense increase!" );
 		    }
 		    else if (i == 4) {
 			    pat.specialize(smaug, 4); 
